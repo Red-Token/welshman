@@ -5,6 +5,7 @@ The `Connection` class is the core building block for relay communication in `@w
 ## Overview
 
 A Connection handles:
+
 - WebSocket lifecycle
 - Message queuing and throttling
 - Connection state tracking
@@ -14,13 +15,13 @@ A Connection handles:
 ## Basic Usage
 
 ```typescript
-import {Connection} from '@welshman/net'
+import {Connection} from "@welshman/net"
 
 // Create connection
 const connection = new Connection("wss://relay.example.com")
 
 // Listen for events
-connection.on('event', (conn, subId, event) => {
+connection.on("event", (conn, subId, event) => {
   console.log(`Got event from ${conn.url}`)
 })
 
@@ -37,7 +38,7 @@ The `connection.open()` promise resolves when the WebSocket connection is fully 
 However, it's important to understand the authentication flow:
 
 ```typescript
-import {Connection} from '@welshman/net'
+import {Connection} from "@welshman/net"
 
 const connection = new Connection("wss://relay.example.com")
 
@@ -54,12 +55,12 @@ const openRelay = async (url: string) => {
   await connection.open()
 
   // Check if relay requires auth
-  if (connection.auth.status === 'requested') {
+  if (connection.auth.status === "requested") {
     try {
       // Handle auth challenge
       await connection.auth.attempt(3000) // 3s timeout
     } catch (e) {
-      console.error('Auth failed:', e)
+      console.error("Auth failed:", e)
       return null
     }
   }
@@ -70,6 +71,7 @@ const openRelay = async (url: string) => {
 ```
 
 The key states after `open()` resolves:
+
 - Socket is connected
 - Messages can be queued
 - BUT relay might request authentication

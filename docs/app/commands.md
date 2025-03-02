@@ -16,6 +16,7 @@ unpin(tag)
 ```
 
 Each command returns a [`Thunk`](app/thunk) which:
+
 - Optimistically updates local state
 - Signs and publishes the event
 - Can be aborted within a delay window
@@ -26,11 +27,10 @@ Each command returns a [`Thunk`](app/thunk) which:
 ### Following/Unfollowing Users
 
 ```typescript
-import {follow, unfollow, userFollows} from '@welshman/app'
+import {follow, unfollow, userFollows} from "@welshman/app"
 
 // Follow with optimistic update
 const followUser = async (pubkey: string) => {
-
   // Creates and publishes event with an updated follow list
   const thunk = await follow(pubkey)
 
@@ -57,19 +57,16 @@ const unfollowUser = async (pubkey: string) => {
 ### Managing Pins
 
 ```typescript
-import {pin, unpin, userPins} from '@welshman/app'
+import {pin, unpin, userPins} from "@welshman/app"
 
 // Pin an event with context
 const pinEvent = async (event: TrustedEvent) => {
-  const thunk = await pin([
-    'e', event.id,
-    ctx.app.router.Event(event).getUrl()
-  ])
+  const thunk = await pin(["e", event.id, ctx.app.router.Event(event).getUrl()])
 
   // Handle specific relay errors
   thunk.status.subscribe(statuses => {
     for (const [url, {status, message}] of Object.entries(statuses)) {
-      if (status === 'failure') {
+      if (status === "failure") {
         console.error(`Failed on ${url}: ${message}`)
       }
     }
@@ -78,6 +75,7 @@ const pinEvent = async (event: TrustedEvent) => {
 ```
 
 All commands:
+
 - Handle encryption automatically
 - Select appropriate relays
 - Update local state immediately

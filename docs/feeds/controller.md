@@ -5,25 +5,25 @@ The `FeedController` class is responsible for managing and executing feed querie
 ## Usage
 
 ```typescript
-import { FeedController } from '@welshman/feeds'
+import {FeedController} from "@welshman/feeds"
 
 const controller = new FeedController({
   feed: yourFeedDefinition,
-  request: async ({ filters, relays, onEvent }) => {
+  request: async ({filters, relays, onEvent}) => {
     // Your implementation for fetching events
   },
-  requestDVM: async ({ kind, tags, relays, onEvent }) => {
+  requestDVM: async ({kind, tags, relays, onEvent}) => {
     // Your implementation for DVM requests
   },
-  getPubkeysForScope: (scope) => {
+  getPubkeysForScope: scope => {
     // Return pubkeys for given scope
-    return ['pubkey1', 'pubkey2']
+    return ["pubkey1", "pubkey2"]
   },
   getPubkeysForWOTRange: (min, max) => {
     // Return pubkeys within WOT range
-    return ['pubkey1', 'pubkey2']
+    return ["pubkey1", "pubkey2"]
   },
-  onEvent: (event) => {
+  onEvent: event => {
     // Handle received events
   },
   onExhausted: () => {
@@ -42,6 +42,7 @@ constructor(options: FeedOptions)
 ```
 
 Creates a new feed controller with the given options:
+
 - `feed`: The feed definition to execute
 - `request`: Function to fetch events from relays
 - `requestDVM`: Function to fetch events from DVMs
@@ -54,16 +55,20 @@ Creates a new feed controller with the given options:
 ### Methods
 
 #### `load(limit: number): Promise<void>`
+
 ```typescript
 const controller = new FeedController(options)
 await controller.load(10) // Load 10 events
 ```
+
 Loads events from the feed up to the specified limit.
 
 #### `getLoader(): Promise<(limit: number) => Promise<void>>`
+
 Gets the loader function for this feed. Usually called internally by `load()`.
 
 #### `getRequestItems(): Promise<RequestItem[] | undefined>`
+
 Gets the compiled request items for this feed. Usually called internally.
 
 ## Advanced Features
@@ -75,15 +80,15 @@ When `useWindowing` is enabled, the controller uses a time-based window approach
 ```typescript
 const controller = new FeedController({
   ...options,
-  useWindowing: true
+  useWindowing: true,
 })
 ```
 
 This is useful for:
+
 - Loading recent events first
 - Handling large datasets efficiently
 - Progressive loading of historical data
-
 
 ## Examples
 
@@ -100,12 +105,12 @@ await controller.load(20) // Load 20 events
 const controller = new FeedController({
   ...options,
   useWindowing: true,
-  onEvent: (event) => {
-    console.log('Received event:', event.id)
+  onEvent: event => {
+    console.log("Received event:", event.id)
   },
   onExhausted: () => {
-    console.log('No more events available')
-  }
+    console.log("No more events available")
+  },
 })
 
 // Load events in batches
@@ -123,7 +128,7 @@ async function loadAllEvents() {
 try {
   await controller.load(10)
 } catch (error) {
-  if (error.message.includes('relay')) {
+  if (error.message.includes("relay")) {
     // Handle relay errors
   } else {
     // Handle other errors

@@ -5,6 +5,7 @@ The Router is the critical component to efficiently enable the `outbox model` in
 ## Overview
 
 The router provides scenarios for common **Nostr** operations:
+
 - Reading user profiles
 - Publishing events
 - Following threads
@@ -12,6 +13,7 @@ The router provides scenarios for common **Nostr** operations:
 - Searching content
 
 Each scenario considers:
+
 - User's relay preferences (NIP-65)
 - Event hints in tags
 - Relay quality scores
@@ -21,12 +23,12 @@ Each scenario considers:
 ## Basic Usage
 
 ```typescript
-import {ctx, setContext} from '@welshman/lib'
-import {getDefaultAppContext} from '@welshman/app'
+import {ctx, setContext} from "@welshman/lib"
+import {getDefaultAppContext} from "@welshman/app"
 
 // Initialize router
 setContext({
-  app: getDefaultAppContext()
+  app: getDefaultAppContext(),
 })
 
 // Use router scenarios
@@ -45,31 +47,25 @@ const threadRelays = router.Replies(event).getUrls()
 ## Thread Navigation
 
 ```typescript
-import {ctx} from '@welshman/lib'
-import {createEvent, NOTE} from '@welshman/util'
-import {publishThunk} from '@welshman/app'
+import {ctx} from "@welshman/lib"
+import {createEvent, NOTE} from "@welshman/util"
+import {publishThunk} from "@welshman/app"
 
 const loadThread = async (event: TrustedEvent) => {
   // Get relays for root event
-  const rootRelays = ctx.app.router
-    .EventRoots(event)
-    .getUrls()
+  const rootRelays = ctx.app.router.EventRoots(event).getUrls()
 
   // Get relays for replies
-  const replyRelays = ctx.app.router
-    .EventParents(event)
-    .getUrls()
+  const replyRelays = ctx.app.router.EventParents(event).getUrls()
 
   // Get relays for mentions
-  const mentionRelays = ctx.app.router
-    .EventMentions(event)
-    .getUrls()
+  const mentionRelays = ctx.app.router.EventMentions(event).getUrls()
 
   // Load from all relevant relays
   await Promise.all([
     subscribe({filters, relays: rootRelays}),
     subscribe({filters, relays: replyRelays}),
-    subscribe({filters, relays: mentionRelays})
+    subscribe({filters, relays: mentionRelays}),
   ])
 }
 

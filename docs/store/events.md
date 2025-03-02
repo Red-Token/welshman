@@ -1,17 +1,18 @@
 # Event-Based Stores
 
 ## deriveEventsMapped
+
 Creates a store that maintains a mapped collection of events from a repository.
 Useful when you want to transform events into a different data structure while maintaining reactivity.
 
 ```typescript
-import {Repository, NAMED_PEOPLE, type TrustedEvent} from '@welshman/util'
-import {deriveEventsMapped} from '@welshman/store'
+import {Repository, NAMED_PEOPLE, type TrustedEvent} from "@welshman/util"
+import {deriveEventsMapped} from "@welshman/store"
 
 interface UserProfile {
-  name: string;
-  about: string;
-  pubkey: string;
+  name: string
+  about: string
+  pubkey: string
 }
 
 const repository = new Repository()
@@ -30,59 +31,66 @@ const profiles = deriveEventsMapped<UserProfile>(repository, {
     content: {
       name: profile.name,
       about: profile.about,
-    }
+    },
   }),
   throttle: 1000, // Optional: throttle updates
-  includeDeleted: false // Optional: exclude deleted events
+  includeDeleted: false, // Optional: exclude deleted events
 })
 ```
 
 ## deriveEvents
+
 Creates a store that maintains a collection of raw events from a repository.
 Useful when you want to work directly with events without transformation.
 
 ```typescript
-import {Repository} from '@welshman/util'
-import {deriveEvents} from '@welshman/store'
+import {Repository} from "@welshman/util"
+import {deriveEvents} from "@welshman/store"
 
 const repository = new Repository()
 
 const textNotes = deriveEvents(repository, {
-  filters: [{kinds: [NOTE], // kind 1 = text note
-  authors: ['pubkey1', 'pubkey2']}],
+  filters: [
+    {
+      kinds: [NOTE], // kind 1 = text note
+      authors: ["pubkey1", "pubkey2"],
+    },
+  ],
   throttle: 500,
-  includeDeleted: false
+  includeDeleted: false,
 })
 
 // Subscribe to changes
 textNotes.subscribe(events => {
-  console.log('New text notes:', events)
+  console.log("New text notes:", events)
 })
 ```
 
 ## deriveEvent
+
 Creates a store that tracks a single event by its ID or address.
 Returns a derived store containing the event or undefined.
 
 ```typescript
-import {Repository} from '@welshman/util'
-import {deriveEvent} from '@welshman/store'
+import {Repository} from "@welshman/util"
+import {deriveEvent} from "@welshman/store"
 
 const repository = new Repository()
 
-const specificEvent = deriveEvent(repository, 'event_id_or_address')
+const specificEvent = deriveEvent(repository, "event_id_or_address")
 
 // Subscribe to changes of the specific event
 specificEvent.subscribe(event => {
   if (event) {
-    console.log('Event updated:', event)
+    console.log("Event updated:", event)
   } else {
-    console.log('Event not found')
+    console.log("Event not found")
   }
 })
 ```
 
 ## deriveIsDeleted
+
 Creates a store that tracks whether an event has been deleted. Returns a boolean store.
 
 ```typescript
@@ -101,6 +109,7 @@ isDeleted.subscribe(deleted => {
 ```
 
 ## deriveIsDeletedByAddress
+
 Creates a store that tracks whether an event has been deleted by address.
 Similar to deriveIsDeleted but checks deletion by address instead of event ID.
 

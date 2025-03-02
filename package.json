@@ -71,6 +71,7 @@
     "pub": "npm run lint && npm run build && npm publish",
     "build": "gts clean && tsc",
     "lint": "gts lint",
+    "format": "prettier --write .",
     "fix": "gts fix"
   },
   "repository": {

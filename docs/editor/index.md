@@ -25,7 +25,7 @@ interface WelshmanOptions {
   submit: () => void
 
   // File upload configuration
-  defaultUploadUrl?: string      // Default: "https://nostr.build"
+  defaultUploadUrl?: string // Default: "https://nostr.build"
   defaultUploadType?: "nip96" | "blossom" // Default: "nip96"
 
   // Extension configuration
@@ -38,6 +38,7 @@ interface WelshmanOptions {
 The extension bundles and configures multiple TipTap and nostr-editor extensions:
 
 #### Core TipTap Extensions
+
 - Document
 - Text
 - Paragraph
@@ -49,6 +50,7 @@ The extension bundles and configures multiple TipTap and nostr-editor extensions
 - Placeholder
 
 #### Nostr-specific Extensions
+
 - NostrExtension (base)
 - Bolt11Extension (Lightning invoices)
 - FileUploadExtension
@@ -62,20 +64,21 @@ The extension bundles and configures multiple TipTap and nostr-editor extensions
 - NSecRejectExtension
 
 #### Custom Extensions
+
 - BreakOrSubmit (Enter key handling)
 - WordCount
 
 ### Usage
 
-```typescript
-import { Editor } from '@tiptap/core'
-import { WelshmanExtension } from '@welshman/editor'
+````typescript
+import {Editor} from "@tiptap/core"
+import {WelshmanExtension} from "@welshman/editor"
 
 const editor = new Editor({
   extensions: [
     WelshmanExtension.configure({
       // Required: Event signing function
-      sign: async (event) => {
+      sign: async event => {
         return signEvent(event)
       },
 
@@ -97,31 +100,27 @@ const editor = new Editor({
         // Configure extensions
         placeholder: {
           config: {
-            placeholder: 'What\'s on your mind?'
-          }
+            placeholder: "What's on your mind?",
+          },
         },
 
         // Extend existing extensions
         codeBlock: {
           extend: {
-            renderText: (props) => '```' + props.node.textContent + '```'
-          }
+            renderText: props => "```" + props.node.textContent + "```",
+          },
         },
         fileUpload: {
           config: {
             immediateUpload: true,
-            allowedMimeTypes: [
-              "image/jpeg",
-              "image/png",
-              "video/mp4"
-            ]
-          }
-        }
-      }
-    })
-  ]
+            allowedMimeTypes: ["image/jpeg", "image/png", "video/mp4"],
+          },
+        },
+      },
+    }),
+  ],
 })
-```
+````
 
 ### Extension Configuration
 
@@ -148,6 +147,7 @@ type WelshmanExtensionOptions = {
 ### Custom Components
 
 The extension includes Svelte components for rendering various Nostr entities in the editor:
+
 - EditBolt11: Lightning invoice
 - EditMedia: Image and video
 - EditEvent: Nostr event

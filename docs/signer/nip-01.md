@@ -29,8 +29,8 @@ The NIP-01 implementation extends the base interface with two static utility met
 ### Usage Example
 
 ```typescript
-import { ISigner } from './interfaces'
-import { Nip01Signer } from './signers/nip01'
+import {ISigner} from "./interfaces"
+import {Nip01Signer} from "./signers/nip01"
 
 // Using the standard interface
 const signer: ISigner = new Nip01Signer(mySecret)

@@ -9,7 +9,6 @@ A lightweight TypeScript utility library with zero dependencies, providing essen
 - **Utility Functions** - Helpers for arrays, objects, strings, and more
 - **Worker Queue** - Process tasks asynchronously with batching and throttling
 
-
 ## Installation
 
 ```bash

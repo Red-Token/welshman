@@ -14,16 +14,16 @@ The subscription system extends Nostr's base subscription model with intelligent
 ```typescript
 type SubscribeRequest = {
   // Required
-  filters: Filter[]              // What to query
+  filters: Filter[] // What to query
 
   // Behavior Control
-  closeOnEose?: boolean         // Auto-close and use cache
-  timeout?: number             // Max time to wait
-  authTimeout?: number        // Time for auth negotiation
-  requestDelay?: number      // Delay between batched requests
+  closeOnEose?: boolean // Auto-close and use cache
+  timeout?: number // Max time to wait
+  authTimeout?: number // Time for auth negotiation
+  requestDelay?: number // Delay between batched requests
 
   // Optional
-  relays?: string[]         // Specific relays to query
+  relays?: string[] // Specific relays to query
 
   // Event Handlers
   onEvent?: (event: TrustedEvent) => void
@@ -45,7 +45,7 @@ The `closeOnEose` parameter is crucial for controlling caching behavior:
 const loadKnownEvent = async (id: string) => {
   const events = await load({
     filters: [{ids: [id]}],
-    closeOnEose: true
+    closeOnEose: true,
   })
   return events[0]
 }
@@ -57,11 +57,13 @@ const loadKnownEvent = async (id: string) => {
 // - Good for: Replaceable events, live data
 const watchProfile = (pubkey: string) => {
   return subscribe({
-    filters: [{
-      kinds: [PROFILE],
-      authors: [pubkey]
-    }],
-    closeOnEose: false // Force relay query
+    filters: [
+      {
+        kinds: [PROFILE],
+        authors: [pubkey],
+      },
+    ],
+    closeOnEose: false, // Force relay query
   })
 }
 ```
@@ -73,18 +75,20 @@ const watchProfile = (pubkey: string) => {
 ```typescript
 // Load specific event
 const event = await load({
-  filters: [{ids: [eventId]}]
+  filters: [{ids: [eventId]}],
   // closeOnEose: true by default
 })
 
 // Load latest profile
 const profile = await load({
-  filters: [{
-    kinds: [PROFILE],
-    authors: [pubkey],
-    limit: 1
-  }],
-  closeOnEose: false // Get latest from network
+  filters: [
+    {
+      kinds: [PROFILE],
+      authors: [pubkey],
+      limit: 1,
+    },
+  ],
+  closeOnEose: false, // Get latest from network
 })
 ```
 
@@ -93,14 +97,16 @@ const profile = await load({
 ```typescript
 // Watch for updates
 const sub = subscribe({
-  filters: [{
-    kinds: [NOTE],
-    since: now() // Only new events
-  }],
+  filters: [
+    {
+      kinds: [NOTE],
+      since: now(), // Only new events
+    },
+  ],
   closeOnEose: false, // Stay open
 })
 
-sub.on('event', (url, event) => {
+sub.on("event", (url, event) => {
   // Handle live events
 })
 ```
@@ -111,23 +117,23 @@ sub.on('event', (url, event) => {
 // Profile loader with refresh control
 const loadProfile = async (pubkey: string, options = {}) => {
   const {
-    forceRefresh = false,    // Skip cache
-    timeout = 3000,         // Max wait time
-    relays = []           // Optional relay override
+    forceRefresh = false, // Skip cache
+    timeout = 3000, // Max wait time
+    relays = [], // Optional relay override
   } = options
 
   // Get optimal relays if not specified
-  const targetRelays = relays.length > 0
-    ? relays
-    : ctx.app.router.ForPubkey(pubkey).getUrls()
+  const targetRelays = relays.length > 0 ? relays : ctx.app.router.ForPubkey(pubkey).getUrls()
 
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const sub = subscribe({
-      filters: [{
-        kinds: [PROFILE],
-        authors: [pubkey],
-        limit: 1
-      }],
+      filters: [
+        {
+          kinds: [PROFILE],
+          authors: [pubkey],
+          limit: 1,
+        },
+      ],
       relays: targetRelays,
       closeOnEose: !forceRefresh, // Control cache behavior
       timeout,
@@ -137,7 +143,7 @@ const loadProfile = async (pubkey: string, options = {}) => {
         sub.close()
       },
 
-      onComplete: () => resolve(null)
+      onComplete: () => resolve(null),
     })
   })
 }
@@ -146,6 +152,7 @@ const loadProfile = async (pubkey: string, options = {}) => {
 ## Repository Integration
 
 All events from subscriptions are automatically:
+
 - Saved to the repository
 - Tracked to their source relay
 - Checked against deletion status

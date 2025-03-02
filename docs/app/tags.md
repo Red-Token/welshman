@@ -5,27 +5,26 @@ These are especially useful when creating events that reference other events or 
 
 ## Tag Creators
 
-
 ### User Tags
+
 ```typescript
-import {tagPubkey} from '@welshman/app'
+import {tagPubkey} from "@welshman/app"
 
 // Create a p-tag with relay hint and profile name
 const tag = tagPubkey(authorPubkey)
 // => ["p", pubkey, "wss://relay.example.com", "username"]
 ```
 
-
 ### Event Reference Tags
 
 ```typescript
 import {
-  tagEvent,              // Basic event reference
-  tagEventForQuote,      // For quoting events
-  tagEventForReply,      // For reply threads
-  tagEventForComment,    // For NIP-23 comments
-  tagEventForReaction    // For reactions
-} from '@welshman/app'
+  tagEvent, // Basic event reference
+  tagEventForQuote, // For quoting events
+  tagEventForReply, // For reply threads
+  tagEventForComment, // For NIP-23 comments
+  tagEventForReaction, // For reactions
+} from "@welshman/app"
 
 // Real world example: Creating a reply
 const createReply = async (parent: TrustedEvent, content: string) => {
@@ -40,19 +39,20 @@ const createReply = async (parent: TrustedEvent, content: string) => {
     createEvent(NOTE, {
       content,
       tags,
-      created_at: now()
-    })
+      created_at: now(),
+    }),
   )
 
   return publishThunk({
     event,
     // Use relay hints from tags
-    relays: ctx.app.router.PublishEvent(event).getUrls()
+    relays: ctx.app.router.PublishEvent(event).getUrls(),
   })
 }
 ```
 
 All tag creators:
+
 - Add appropriate relay hints using the router
 - Handle replaceable/parameterized events
 - Follow adequate NIP-10/NIP-22 conventions for threading
@@ -61,6 +61,7 @@ All tag creators:
 - Preserve tag order
 
 The tagging system is crucial for:
+
 - Thread construction
 - Event reactions
 - User mentions

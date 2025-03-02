@@ -13,8 +13,8 @@ The `Nip59` class provides utilities for implementing the Gift Wrap protocol (NI
 ## Basic Usage
 
 ```typescript
-import { Nip59 } from '@welshman/signer'
-import { createEvent, DIRECT_MESSAGE } from '@welshman/util'
+import {Nip59} from "@welshman/signer"
+import {createEvent, DIRECT_MESSAGE} from "@welshman/util"
 
 // Create a NIP-59 instance from any signer
 const nip59 = Nip59.fromSigner(mySigner)
@@ -24,8 +24,8 @@ const rumor = await nip59.wrap(
   recipientPubkey,
   createEvent(DIRECT_MESSAGE, {
     content: "Secret message",
-    tags: [["p", recipientPubkey]]
-  })
+    tags: [["p", recipientPubkey]],
+  }),
 )
 
 // The wrapped event to publish
@@ -49,7 +49,7 @@ export const wrap = async (
   wrapper: ISigner,
   pubkey: string,
   template: StampedEvent,
-  tags: string[][] = []
+  tags: string[][] = [],
 ) => {
   const rumor = await getRumor(signer, template)
   const seal = await getSeal(signer, pubkey, rumor)
@@ -81,11 +81,7 @@ class Nip59 {
    * @param tags Additional tags for the wrap event (optional)
    * @returns Promise<UnwrappedEvent> Original event and its wrapped version
    */
-  wrap(
-    pubkey: string,
-    template: StampedEvent,
-    tags?: string[][]
-  ): Promise<UnwrappedEvent>
+  wrap(pubkey: string, template: StampedEvent, tags?: string[][]): Promise<UnwrappedEvent>
 
   /**
    * Unwraps a received wrapped event
@@ -108,8 +104,8 @@ class Nip59 {
 ### Basic Wrapping & Unwrapping
 
 ```typescript
-import { Nip59, Nip01Signer } from '@welshman/signer'
-import { createEvent, DIRECT_MESSAGE } from '@welshman/util'
+import {Nip59, Nip01Signer} from "@welshman/signer"
+import {createEvent, DIRECT_MESSAGE} from "@welshman/util"
 
 async function example() {
   // Create NIP-59 instance
@@ -119,7 +115,7 @@ async function example() {
   // Create and wrap an event
   const event = createEvent(DIRECT_MESSAGE, {
     content: "Secret message",
-    tags: [["p", recipientPubkey]]
+    tags: [["p", recipientPubkey]],
   })
 
   const rumor = await nip59.wrap(recipientPubkey, event)
@@ -136,16 +132,14 @@ async function example() {
 ### Custom Wrapper Signer
 
 ```typescript
-import { Nip59, Nip01Signer } from '@welshman/signer'
+import {Nip59, Nip01Signer} from "@welshman/signer"
 
 // Create with specific wrapper
 const nip59 = new Nip59(
   mainSigner,
-  Nip01Signer.ephemeral() // Custom wrapper
+  Nip01Signer.ephemeral(), // Custom wrapper
 )
 
 // Or add wrapper to existing instance
-const nip59WithWrapper = nip59.withWrapper(
-  Nip01Signer.ephemeral()
-)
+const nip59WithWrapper = nip59.withWrapper(Nip01Signer.ephemeral())
 ```

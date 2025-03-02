@@ -5,6 +5,7 @@ Thunks provide optimistic updates for event publishing. They immediately update 
 ## Overview
 
 A thunk:
+
 - Updates local state immediately
 - Handles event signing in the background
 - Manages publish status per relay
@@ -15,14 +16,12 @@ A thunk:
 ## Basic Usage
 
 ```typescript
-import {publishThunk} from '@welshman/app'
-import {createEvent, NOTE} from '@welshman/util'
+import {publishThunk} from "@welshman/app"
+import {createEvent, NOTE} from "@welshman/util"
 
 const publish = async (content: string) => {
   // Get optimal relays for publishing
-  const relays = ctx.app.router
-    .FromUser()
-    .getUrls()
+  const relays = ctx.app.router.FromUser().getUrls()
 
   // Create and publish thunk
   const thunk = await publishThunk({

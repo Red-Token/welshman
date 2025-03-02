@@ -29,6 +29,7 @@ class Repository<E extends HashedEvent = TrustedEvent> extends Emitter {
 ## Core Methods
 
 ### Event Management
+
 ```typescript
 // Store or update event
 publish(event: E, opts = { shouldNotify: true }): boolean
@@ -49,6 +50,7 @@ isDeletedById(event: E): boolean
 ```
 
 ### Querying
+
 ```typescript
 // Query events with filters
 query(
@@ -69,6 +71,7 @@ load(events: E[], chunkSize = 1000): void
 ## Usage Examples
 
 ### Basic Repository Operations
+
 ```typescript
 // Create repository
 const repo = new Repository<TrustedEvent>()
@@ -77,9 +80,7 @@ const repo = new Repository<TrustedEvent>()
 repo.publish(event)
 
 // Query events
-const events = repo.query([
-  { kinds: [1], limit: 100 }
-])
+const events = repo.query([{kinds: [1], limit: 100}])
 
 // Check event status
 if (!repo.isDeleted(event)) {
@@ -88,6 +89,7 @@ if (!repo.isDeleted(event)) {
 ```
 
 ### Bulk Operations
+
 ```typescript
 // Load multiple events
 repo.load(events, 500) // Process in chunks of 500
@@ -97,19 +99,20 @@ const allEvents = repo.dump()
 ```
 
 ### Query Examples
+
 ```typescript
 // Query with multiple filters
 const events = repo.query([
   // Recent events from specific authors
   {
     kinds: [1],
-    authors: ['pub1', 'pub2'],
-    since: now() - 24 * 60 * 60
+    authors: ["pub1", "pub2"],
+    since: now() - 24 * 60 * 60,
   },
   // Events with specific tags
   {
-    '#t': ['bitcoin', 'nostr'],
-    limit: 50
-  }
+    "#t": ["bitcoin", "nostr"],
+    limit: 50,
+  },
 ])
 ```

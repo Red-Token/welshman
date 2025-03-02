@@ -13,8 +13,8 @@ import {
   relays,
   handles,
   freshness,
-  plaintext
-} from '@welshman/app'
+  plaintext,
+} from "@welshman/app"
 
 // Real world example from Coracle
 const initializeStorage = async () => {
@@ -22,33 +22,23 @@ const initializeStorage = async () => {
     // Persist relay info
     relays: {
       keyPath: "url",
-      store: throttled(3000, relays)
+      store: throttled(3000, relays),
     },
 
     // Persist NIP-05 handles
     handles: {
       keyPath: "nip05",
-      store: throttled(3000, handles)
+      store: throttled(3000, handles),
     },
 
     // Track data freshness
-    freshness: storageAdapters.fromObjectStore(
-      freshness,
-      {throttle: 3000}
-    ),
+    freshness: storageAdapters.fromObjectStore(freshness, {throttle: 3000}),
 
     // Store decrypted content
-    plaintext: storageAdapters.fromObjectStore(
-      plaintext,
-      {throttle: 3000}
-    ),
+    plaintext: storageAdapters.fromObjectStore(plaintext, {throttle: 3000}),
 
     // Store events and their sources
-    events: storageAdapters.fromRepositoryAndTracker(
-      repository,
-      tracker,
-      {throttle: 3000}
-    )
+    events: storageAdapters.fromRepositoryAndTracker(repository, tracker, {throttle: 3000}),
   })
 
   // Wait for storage to be ready
@@ -59,6 +49,7 @@ const initializeStorage = async () => {
 ```
 
 The storage system:
+
 - Persists data across page reloads
 - Throttles writes for performance
 - Handles store migrations

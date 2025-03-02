@@ -37,22 +37,22 @@ type WorkerOpts<T> = {
 const worker = new Worker<Message>({
   chunkSize: 10,
   delay: 100,
-  getKey: msg => msg.type
+  getKey: msg => msg.type,
 })
 
 // Add message handlers
-worker.addHandler('email', async (msg) => {
+worker.addHandler("email", async msg => {
   await sendEmail(msg)
 })
 
-worker.addHandler('notification', async (msg) => {
+worker.addHandler("notification", async msg => {
   await sendNotification(msg)
 })
 
 // Add messages to queue
 worker.push({
-  type: 'email',
-  content: 'Hello'
+  type: "email",
+  content: "Hello",
 })
 ```
 
@@ -64,16 +64,16 @@ Messages can be routed to specific handlers based on a key:
 
 ```typescript
 const worker = new Worker<Task>({
-  getKey: task => task.priority
+  getKey: task => task.priority,
 })
 
 // Handle high priority tasks
-worker.addHandler('high', async (task) => {
+worker.addHandler("high", async task => {
   await processUrgent(task)
 })
 
 // Handle normal priority tasks
-worker.addHandler('normal', async (task) => {
+worker.addHandler("normal", async task => {
   await processNormal(task)
 })
 ```
@@ -83,8 +83,8 @@ worker.addHandler('normal', async (task) => {
 Handle all messages regardless of routing key:
 
 ```typescript
-worker.addGlobalHandler(async (message) => {
-  console.log('Processing:', message)
+worker.addGlobalHandler(async message => {
+  console.log("Processing:", message)
 })
 ```
 
@@ -94,8 +94,8 @@ Defer processing of messages that aren't ready:
 
 ```typescript
 const worker = new Worker<Task>({
-  shouldDefer: (task) => !task.isReady(),
-  delay: 1000
+  shouldDefer: task => !task.isReady(),
+  delay: 1000,
 })
 
 worker.push(task) // Will retry until task.isReady()

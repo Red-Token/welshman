@@ -2,7 +2,6 @@
 
 Welshman is modular - install only what you need:
 
-
 ```bash
 # Core nostr utilities (events, filters, tags)
 npm i @welshman/util
@@ -36,16 +35,19 @@ npm i @welshman/editor
 Choose packages based on your needs:
 
 - Building a framework-agnostic client? Start with:
+
   ```bash
   npm i @welshman/util @welshman/net @welshman/signer @welshman/feeds
   ```
 
 - Building a Svelte client? Add state management:
+
   ```bash
   npm i @welshman/store @welshman/app
   ```
 
 - Need content features? Include:
+
   ```bash
   npm i @welshman/content
   ```
@@ -54,4 +56,4 @@ Choose packages based on your needs:
   ```bash
   npm i @welshman/util @welshman/net @welshman/signer @welshman/feeds @welshman/store @welshman/app @welshman/content @welshman/editor
   ```
-Each package is independent but integrates seamlessly. The core packages (`util`, `net`, `signer`, `feeds`, `content`) work with any framework, while `store`, `app` and `editor` are built for Svelte applications.
+  Each package is independent but integrates seamlessly. The core packages (`util`, `net`, `signer`, `feeds`, `content`) work with any framework, while `store`, `app` and `editor` are built for Svelte applications.

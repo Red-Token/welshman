@@ -5,6 +5,7 @@ The Executor class orchestrates event delivery and subscription management acros
 ## Overview
 
 The Executor:
+
 - Manages subscriptions
 - Handles event publishing
 - Supports NIP-77 (negentropy)
@@ -13,38 +14,27 @@ The Executor:
 ## Basic Usage
 
 ```typescript
-import {Executor, Relays} from '@welshman/net'
+import {Executor, Relays} from "@welshman/net"
 
 // Create executor with relay target
-const executor = new Executor(
-  new Relays([
-    connection1,
-    connection2
-  ])
-)
+const executor = new Executor(new Relays([connection1, connection2]))
 
 // Subscribe to events
-const sub = executor.subscribe(
-  [{kinds: [1], limit: 10}],
-  {
-    onEvent: (url, event) => {
-      console.log(`Got event from ${url}`, event)
-    },
-    onEose: (url) => {
-      console.log(`EOSE from ${url}`)
-    }
-  }
-)
+const sub = executor.subscribe([{kinds: [1], limit: 10}], {
+  onEvent: (url, event) => {
+    console.log(`Got event from ${url}`, event)
+  },
+  onEose: url => {
+    console.log(`EOSE from ${url}`)
+  },
+})
 
 // Publish event
-const pub = executor.publish(
-  signedEvent,
-  {
-    onOk: (url, id, success, message) => {
-      console.log(`Published to ${url}: ${success ? 'OK' : message}`)
-    }
-  }
-)
+const pub = executor.publish(signedEvent, {
+  onOk: (url, id, success, message) => {
+    console.log(`Published to ${url}: ${success ? "OK" : message}`)
+  },
+})
 
 // Clean up
 sub.unsubscribe()

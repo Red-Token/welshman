@@ -5,7 +5,7 @@ The Sync utilities in `@welshman/net` provide methods for synchronizing events b
 ## Overview
 
 ```typescript
-import {sync, pull, push} from '@welshman/net'
+import {sync, pull, push} from "@welshman/net"
 
 // Three main operations:
 // 1. pull: Get events from relays
@@ -14,55 +14,59 @@ import {sync, pull, push} from '@welshman/net'
 ```
 
 These utilities are primarily used by:
+
 - `Repository` for syncing with relays
 - `FeedController` for initial feed loading
 
 ## Basic Usage
 
 ```typescript
-import {sync, pull, getFilterSelections} from '@welshman/net'
+import {sync, pull, getFilterSelections} from "@welshman/net"
 
 // Sync user profile data
 const syncProfiles = async (pubkeys: string[]) => {
   await sync({
     // What to sync
-    filters: [{
-      kinds: [0],
-      authors: pubkeys
-    }],
+    filters: [
+      {
+        kinds: [0],
+        authors: pubkeys,
+      },
+    ],
 
     // Which relays
-    relays: ctx.app.router
-      .ForPubkeys(pubkeys)
-      .getUrls(),
+    relays: ctx.app.router.ForPubkeys(pubkeys).getUrls(),
 
     // Local events to consider
-    events: repository.query([{
-      kinds: [0],
-      authors: pubkeys
-    }])
+    events: repository.query([
+      {
+        kinds: [0],
+        authors: pubkeys,
+      },
+    ]),
   })
 }
 
 // Initial feed load with negentropy
 const loadFeed = async () => {
   await pull({
-    filters: [{
-      kinds: [1],
-      limit: 100
-    }],
-    relays: ctx.app.router
-      .ForUser()
-      .getUrls(),
+    filters: [
+      {
+        kinds: [1],
+        limit: 100,
+      },
+    ],
+    relays: ctx.app.router.ForUser().getUrls(),
     events: [], // No local events yet
-    onEvent: (event) => {
+    onEvent: event => {
       // Handle new events
-    }
+    },
   })
 }
 ```
 
 Sync operations:
+
 - Use NIP-77 when supported by relay
 - Fall back to traditional sync
 - Handle bidirectional sync

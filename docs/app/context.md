@@ -6,13 +6,13 @@ Understanding the app context is essential as it powers [session/authentication]
 ## Basic Setup
 
 ```typescript
-import {ctx, setContext} from '@welshman/lib'
-import {getDefaultNetContext, getDefaultAppContext} from '@welshman/app'
+import {ctx, setContext} from "@welshman/lib"
+import {getDefaultNetContext, getDefaultAppContext} from "@welshman/app"
 
 // Initialize app with default settings
 setContext({
   net: getDefaultNetContext(),
-  app: getDefaultAppContext()
+  app: getDefaultAppContext(),
 })
 
 // Access context anywhere
@@ -50,11 +50,8 @@ setContext({
     authTimeout: 500,
     requestTimeout: 5000,
     dufflepudUrl: "https://api.example.com",
-    indexerRelays: [
-      "wss://relay.example.com",
-      "wss://indexed.example.com"
-    ]
-  })
+    indexerRelays: ["wss://relay.example.com", "wss://indexed.example.com"],
+  }),
 })
 ```
 
@@ -90,8 +87,7 @@ setContext({
     },
 
     // Track deleted events
-    isDeleted: (url, event) =>
-      repository.isDeleted(event),
+    isDeleted: (url, event) => repository.isDeleted(event),
 
     // Custom event handling
     onEvent: (url, event) => {
@@ -100,40 +96,35 @@ setContext({
 
       // Track which relay it came from
       tracker.track(event.id, url)
-    }
-  })
+    },
+  }),
 })
 ```
-
 
 ## Using Context Values
 
 Once configured, context values are used throughout the app:
 
 ```typescript
-import {ctx} from '@welshman/lib'
+import {ctx} from "@welshman/lib"
 
 // Smart relay routing
-const relays = ctx.app.router
-  .ForPubkey(pubkey)
-  .getUrls()
+const relays = ctx.app.router.ForPubkey(pubkey).getUrls()
 
 // Publish with timeout
 const pub = publish({
   event,
   relays,
-  timeout: ctx.app.requestTimeout
+  timeout: ctx.app.requestTimeout,
 })
 
 // Subscribe with auth
 const sub = subscribe({
   filters,
   relays,
-  authTimeout: ctx.app.authTimeout
+  authTimeout: ctx.app.authTimeout,
 })
 
 // Check connection pool
-const connected = ctx.net.pool
-  .get(relay)
-  .socket.status === 'open'
+const connected = ctx.net.pool.get(relay).socket.status === "open"
 ```

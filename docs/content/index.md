@@ -3,16 +3,16 @@
 `@welshman/content` is a comprehensive content processing library designed specifically for Nostr applications.
 It provides a robust system for parsing, processing, and rendering Nostr content while handling various special formats and entities common in the Nostr ecosystem.
 
-
 ## Core Concepts
 
 The package is built around two main components:
 
 1. **Parser**: Transforms raw content into structured elements
+
    ```typescript
    const parsed = parse({
      content: "Hello #nostr, check nostr:npub1...",
-     tags: [["p", "pubkey123"]]
+     tags: [["p", "pubkey123"]],
    })
    ```
 
@@ -33,7 +33,7 @@ The package is built around two main components:
 ## Quick Example
 
 ```typescript
-import { parse, renderAsHtml, truncate } from '@welshman/content'
+import {parse, renderAsHtml, truncate} from "@welshman/content"
 
 // Parse and process content
 const parsed = parse({
@@ -42,18 +42,18 @@ const parsed = parse({
     Check out this note: nostr:note1...
     https://example.com/image.jpg
   `,
-  tags: [["p", "pubkey123"]]
+  tags: [["p", "pubkey123"]],
 })
 
 // Truncate if needed
 const truncated = truncate(parsed, {
   maxLength: 500,
-  mediaLength: 150
+  mediaLength: 150,
 })
 
 // Render as HTML
 const html = renderAsHtml(truncated, {
-  entityBase: "https://your-app.com/"
+  entityBase: "https://your-app.com/",
 }).toString()
 ```
 

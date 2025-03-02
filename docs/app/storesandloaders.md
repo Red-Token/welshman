@@ -26,44 +26,46 @@ export const {
   deriveItem: deriveFollows,
 
   // Function to trigger loading an item from the network
-  loadItem: loadFollows
+  loadItem: loadFollows,
 } = collection({
   name: "collection-name",
   store: baseStore,
   getKey: item => item.keyProperty,
-  load: async (key) => { /* Loading logic */ }
+  load: async key => {
+    /* Loading logic */
+  },
 })
 ```
 
 ## Available Collections
 
-| Collection | Key | Kind | Description |
-|------------|-----|------|-------------|
-| `follows` | pubkey | 3 | User follow lists |
-| `mutes` | pubkey | 10000 | User mute lists |
-| `pins` | pubkey | 10001 | User pinned items |
-| `profiles` | pubkey | 0 | User profile metadata |
-| `relaySelections` | pubkey | 10002 | User relay preferences |
-| `inboxRelaySelections` | pubkey | 10005 | User inbox relay settings |
-| `zappers` | lnurl | - | Lightning zapper metadata |
-| `handles` | nip05 | - | NIP-05 identifier metadata |
+| Collection             | Key    | Kind  | Description                |
+| ---------------------- | ------ | ----- | -------------------------- |
+| `follows`              | pubkey | 3     | User follow lists          |
+| `mutes`                | pubkey | 10000 | User mute lists            |
+| `pins`                 | pubkey | 10001 | User pinned items          |
+| `profiles`             | pubkey | 0     | User profile metadata      |
+| `relaySelections`      | pubkey | 10002 | User relay preferences     |
+| `inboxRelaySelections` | pubkey | 10005 | User inbox relay settings  |
+| `zappers`              | lnurl  | -     | Lightning zapper metadata  |
+| `handles`              | nip05  | -     | NIP-05 identifier metadata |
 
 ## Usage Examples
 
 ### Loading and Accessing Data
 
 ```typescript
-import { loadProfile, deriveProfile, profilesByPubkey } from '@welshman/app'
+import {loadProfile, deriveProfile, profilesByPubkey} from "@welshman/app"
 
 // Trigger loading a profile from the network
-await loadProfile('pubkey123')
+await loadProfile("pubkey123")
 
 // Get a reactive store for a specific profile
-const profile = deriveProfile('pubkey123')
+const profile = deriveProfile("pubkey123")
 
 // Access all profiles by pubkey
 const allProfiles = profilesByPubkey.get()
-const specificProfile = allProfiles.get('pubkey123')
+const specificProfile = allProfiles.get("pubkey123")
 ```
 
 ### User-Specific Collections
@@ -71,7 +73,7 @@ const specificProfile = allProfiles.get('pubkey123')
 Several modules provide user-specific derived stores that automatically load data for the currently signed-in user:
 
 ```typescript
-import { userProfile, userFollows, userMutes, userPins } from '@welshman/app'
+import {userProfile, userFollows, userMutes, userPins} from "@welshman/app"
 
 // These are derived stores that automatically:
 // 1. Watch for changes to the current user's pubkey
@@ -92,17 +94,17 @@ userFollows.subscribe(follows => {
 The `wot.ts` module provides additional utilities for analyzing the social graph:
 
 ```typescript
-import { getFollows, getFollowers, getNetwork, getWotScore } from '@welshman/app'
+import {getFollows, getFollowers, getNetwork, getWotScore} from "@welshman/app"
 
 // Get users followed by a pubkey
-const followedUsers = getFollows('pubkey123')
+const followedUsers = getFollows("pubkey123")
 
 // Get users following a pubkey
-const followers = getFollowers('pubkey123')
+const followers = getFollowers("pubkey123")
 
 // Get extended network (follows-of-follows)
-const network = getNetwork('pubkey123')
+const network = getNetwork("pubkey123")
 
 // Calculate trust score between users
-const score = getWotScore('userPubkey', 'targetPubkey')
+const score = getWotScore("userPubkey", "targetPubkey")
 ```

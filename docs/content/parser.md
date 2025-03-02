@@ -6,38 +6,42 @@ It handles various types of content including Nostr entities, links, code blocks
 ## Content Types
 
 ### Basic Types
+
 ```typescript
 enum ParsedType {
-  Text = "text",         // Plain text
-  Newline = "newline",   // Line breaks
-  Topic = "topic",       // Hashtags (#nostr)
-  Code = "code",         // Code blocks (inline and multi-line)
-  Link = "link",         // URLs
-  LinkGrid = "link-grid" // Grid of media links
+  Text = "text", // Plain text
+  Newline = "newline", // Line breaks
+  Topic = "topic", // Hashtags (#nostr)
+  Code = "code", // Code blocks (inline and multi-line)
+  Link = "link", // URLs
+  LinkGrid = "link-grid", // Grid of media links
 }
 ```
 
 ### Nostr-specific Types
+
 ```typescript
 enum ParsedType {
-  Event = "event",       // Nostr events (note1/nevent1)
-  Profile = "profile",   // Profiles (npub1/nprofile1)
-  Address = "address",   // Addresses (naddr1)
+  Event = "event", // Nostr events (note1/nevent1)
+  Profile = "profile", // Profiles (npub1/nprofile1)
+  Address = "address", // Addresses (naddr1)
 }
 ```
 
 ### Special Format Types
+
 ```typescript
 enum ParsedType {
-  Cashu = "cashu",       // Cashu tokens
-  Invoice = "invoice",    // Lightning invoices
-  Ellipsis = "ellipsis"  // Truncation marker
+  Cashu = "cashu", // Cashu tokens
+  Invoice = "invoice", // Lightning invoices
+  Ellipsis = "ellipsis", // Truncation marker
 }
 ```
 
 ## Parsing Content
 
 ### Main Parser
+
 ```typescript
 const parse = ({
   content = "",
@@ -81,6 +85,7 @@ parseTopic(text: string, context: ParseContext): ParsedTopic | void
 ## Content Processing
 
 ### Truncation
+
 ```typescript
 type TruncateOpts = {
   minLength?: number    // Minimum content length (default: 500)
@@ -102,6 +107,7 @@ const truncated = truncate(parsed, {
 ```
 
 ### Link Processing
+
 ```typescript
 // Consolidate consecutive image links into grids
 const reduceLinks = (content: Parsed[]) => Parsed[]
@@ -153,8 +159,8 @@ const parsed = parse({
   `,
   tags: [
     ["p", "pubkey123"],
-    ["e", "event456"]
-  ]
+    ["e", "event456"],
+  ],
 })
 
 // Process the content
@@ -163,7 +169,7 @@ const processed = reduceLinks(parsed)
 // Truncate if needed
 const final = truncate(processed, {
   maxLength: 500,
-  mediaLength: 150
+  mediaLength: 150,
 })
 
 // Check types and handle accordingly

@@ -13,7 +13,7 @@ npm install nostr-signer-capacitor-plugin
 ## Getting Started
 
 ```typescript
-import { Nip55Signer, getNip55 } from '@welshman/signer'
+import {Nip55Signer, getNip55} from "@welshman/signer"
 
 // Check for available signing apps
 const apps = await getNip55()
@@ -42,7 +42,9 @@ interface AppInfo {
 ```typescript
 constructor(packageName: string)
 ```
+
 Creates a new signer instance that will communicate with the specified native app.
+
 - `packageName`: The package identifier of the native signing app
 
 ### ISigner implementation
@@ -62,19 +64,18 @@ class Nip55Signer implements ISigner {
 }
 ```
 
-
 ## Complete Example
 
 ```typescript
-import { Nip55Signer, getNip55 } from '@welshman/signer'
-import { createEvent, NOTE } from '@welshman/util'
+import {Nip55Signer, getNip55} from "@welshman/signer"
+import {createEvent, NOTE} from "@welshman/util"
 
 async function example() {
   try {
     // Get available signing apps
     const apps = await getNip55()
     if (apps.length === 0) {
-      throw new Error('No native signing apps available')
+      throw new Error("No native signing apps available")
     }
 
     // Create signer with first available app
@@ -82,25 +83,21 @@ async function example() {
 
     // Get public key
     const pubkey = await signer.getPubkey()
-    console.log('Public key:', pubkey)
+    console.log("Public key:", pubkey)
 
     // Sign an event
     const event = createEvent(NOTE, {
       content: "Hello from native app!",
-      tags: [["t", "test"]]
+      tags: [["t", "test"]],
     })
     const signedEvent = await signer.sign(event)
-    console.log('Signed event:', signedEvent)
+    console.log("Signed event:", signedEvent)
 
     // Encrypt a message
-    const encrypted = await signer.nip44.encrypt(
-      recipientPubkey,
-      "Secret message"
-    )
-    console.log('Encrypted:', encrypted)
-
+    const encrypted = await signer.nip44.encrypt(recipientPubkey, "Secret message")
+    console.log("Encrypted:", encrypted)
   } catch (error) {
-    console.error('Native signer error:', error)
+    console.error("Native signer error:", error)
   }
 }
 ```
@@ -155,7 +152,6 @@ class Nip55Signer {
   }
 }
 ```
-
 
 ## Platform Support
 

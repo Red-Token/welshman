@@ -1,6 +1,6 @@
 import {readable, derived, type Readable} from "svelte/store"
-import {indexBy, type Maybe, now} from "@welshman/lib"
-import {withGetter} from "@welshman/store"
+import {indexBy, type Maybe, now} from "../lib/index.js"
+import {withGetter} from "../store/index.js"
 import {getFreshness, setFreshnessThrottled} from "./freshness.js"
 
 export const collection = <T, LoadArgs extends any[]>({

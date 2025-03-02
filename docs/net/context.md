@@ -14,12 +14,8 @@ The Context system is the backbone of `@welshman/net`, providing global configur
 ## Basic Usage
 
 ```typescript
-import {ctx, setContext} from '@welshman/lib'
-import {
-  getDefaultNetContext,
-  Pool,
-  hasValidSignature
-} from '@welshman/net'
+import {ctx, setContext} from "@welshman/lib"
+import {getDefaultNetContext, Pool, hasValidSignature} from "@welshman/net"
 
 // Setup networking context
 setContext({
@@ -43,18 +39,16 @@ setContext({
     },
 
     // Check deletion status
-    isDeleted: (url, event) =>
-      repository.isDeleted(event),
+    isDeleted: (url, event) => repository.isDeleted(event),
 
     // Sign with current user
-    signEvent: async (event) =>
-      signer.get().sign(event)
-  })
+    signEvent: async event => signer.get().sign(event),
+  }),
 })
 
 // Now all package features will use these settings
-subscribe(/*...*/)   // Uses pool, validates events
-publish(/*...*/)    // Uses signEvent
+subscribe(/*...*/) // Uses pool, validates events
+publish(/*...*/) // Uses signEvent
 ```
 
 The Context is used internally by most features in the package.

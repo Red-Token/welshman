@@ -16,18 +16,18 @@ const global = makeGlobalFeed()
 // Time-based Feeds
 const recent = makeCreatedAtFeed({
   since: Date.now() - 86400000,
-  relative: ["since"]
+  relative: ["since"],
 })
 
 // Advanced Feeds
 const dvm = makeDVMFeed({
   kind: 5300,
-  mappings: [["p", [FeedType.Author]]]
+  mappings: [["p", [FeedType.Author]]],
 })
 
 const list = makeListFeed({
   addresses: ["list_id"],
-  mappings: [["t", [FeedType.Tag, "#t"]]]
+  mappings: [["t", [FeedType.Tag, "#t"]]],
 })
 
 // Set Operations
@@ -41,7 +41,7 @@ const difference = makeDifferenceFeed(global, authors)
 Check feed types safely:
 
 ```typescript
-const feed: Feed = makeDVMFeed({ kind: 5300 })
+const feed: Feed = makeDVMFeed({kind: 5300})
 
 if (isDVMFeed(feed)) {
   // feed is now typed as DVMFeed
@@ -61,15 +61,18 @@ if (hasSubFeeds(feed)) {
 ```typescript
 // Default tag mappings
 const defaultTagFeedMappings: TagFeedMapping[] = [
-  ["a", [FeedType.Address]],   // address tags
-  ["e", [FeedType.ID]],        // event references
-  ["p", [FeedType.Author]],    // people/pubkeys
-  ["r", [FeedType.Relay]],     // relay URLs
+  ["a", [FeedType.Address]], // address tags
+  ["e", [FeedType.ID]], // event references
+  ["p", [FeedType.Author]], // people/pubkeys
+  ["r", [FeedType.Relay]], // relay URLs
   ["t", [FeedType.Tag, "#t"]], // hashtags
 ]
 
 // Convert event tags to feeds
-const tags = [["p", "pubkey1"], ["t", "bitcoin"]]
+const tags = [
+  ["p", "pubkey1"],
+  ["t", "bitcoin"],
+]
 const feeds = feedsFromTags(tags)
 // => [[FeedType.Author, "pubkey1"], [FeedType.Tag, "#t", "bitcoin"]]
 
@@ -86,7 +89,7 @@ const filter = {
   kinds: [1],
   authors: ["pubkey1"],
   "#t": ["bitcoin"],
-  since: 1234567890
+  since: 1234567890,
 }
 
 const feeds = feedsFromFilter(filter)
@@ -111,13 +114,10 @@ Walk through a feed tree and visit each node:
 ```typescript
 const feed = makeIntersectionFeed(
   makeAuthorFeed("pubkey1"),
-  makeUnionFeed(
-    makeKindFeed(1),
-    makeTagFeed("#t", "bitcoin")
-  )
+  makeUnionFeed(makeKindFeed(1), makeTagFeed("#t", "bitcoin")),
 )
 
-walkFeed(feed, (node) => {
+walkFeed(feed, node => {
   console.log(`Visiting feed of type: ${node[0]}`)
 })
 ```
@@ -140,6 +140,7 @@ const pubkeys = getFeedArgs(feed) // => ["pubkey1", "pubkey2"]
 ## Best Practices
 
 1. Use factory functions instead of raw arrays:
+
    ```typescript
    // Good
    const feed = makeAuthorFeed("pubkey1")
@@ -149,6 +150,7 @@ const pubkeys = getFeedArgs(feed) // => ["pubkey1", "pubkey2"]
    ```
 
 2. Use type guards for safe type narrowing:
+
    ```typescript
    if (isAuthorFeed(feed)) {
      const pubkeys = getFeedArgs(feed) // Properly typed
@@ -156,6 +158,7 @@ const pubkeys = getFeedArgs(feed) // => ["pubkey1", "pubkey2"]
    ```
 
 3. Use feed transformations for dynamic feed creation:
+
    ```typescript
    // Convert event tags to feeds
    const feeds = feedsFromTags(event.tags)
@@ -167,7 +170,7 @@ const pubkeys = getFeedArgs(feed) // => ["pubkey1", "pubkey2"]
 4. Use feed traversal for analysis or transformation:
    ```typescript
    const kinds = new Set<number>()
-   walkFeed(feed, (node) => {
+   walkFeed(feed, node => {
      if (isKindFeed(node)) {
        getFeedArgs(node).forEach(k => kinds.add(k))
      }

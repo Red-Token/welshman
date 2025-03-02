@@ -38,12 +38,13 @@ type RenderOptions = {
 ## Built-in Renderers
 
 ### Text Renderer
+
 ```typescript
 const textRenderOptions = {
   newline: "\n",
   entityBase: "",
   renderLink: (href, display) => href,
-  renderEntity: (entity) => entity.slice(0, 16) + "…"
+  renderEntity: entity => entity.slice(0, 16) + "…",
 }
 
 const textRenderer = makeTextRenderer({
@@ -52,6 +53,7 @@ const textRenderer = makeTextRenderer({
 ```
 
 ### HTML Renderer
+
 ```typescript
 const htmlRenderOptions = {
   newline: "\n",
@@ -63,7 +65,7 @@ const htmlRenderOptions = {
     element.innerText = display
     return element.outerHTML
   },
-  renderEntity: (entity) => entity.slice(0, 16) + "…"
+  renderEntity: entity => entity.slice(0, 16) + "…",
 }
 
 const htmlRenderer = makeHtmlRenderer({
@@ -97,10 +99,11 @@ renderEllipsis(p: ParsedEllipsis, r: Renderer): void
 ## Usage Examples
 
 ### Basic Text Rendering
+
 ```typescript
 const parsed = parse({
   content: "Hello #nostr, check nostr:npub1...",
-  tags: []
+  tags: [],
 })
 
 // Render as plain text
@@ -111,52 +114,61 @@ const html = renderAsHtml(parsed).toString()
 ```
 
 ### Custom Rendering Options
+
 ```typescript
 // Custom text renderer
 const customText = renderAsText(parsed, {
   entityBase: "nostr:",
-  renderEntity: (entity) => entity.slice(0, 8)
+  renderEntity: entity => entity.slice(0, 8),
 }).toString()
 
 // Custom HTML renderer
 const customHtml = renderAsHtml(parsed, {
   entityBase: "https://example.com/",
   renderLink: (href, display) => `<a class="custom-link" href="${href}">${display}</a>`,
-  renderEntity: (entity) => `<span class="entity">${entity}</span>`
+  renderEntity: entity => `<span class="entity">${entity}</span>`,
 }).toString()
 ```
 
 ### Rendering Individual Elements
+
 ```typescript
 const renderer = makeHtmlRenderer()
 
 // Render single element
-renderOne({
-  type: ParsedType.Link,
-  value: {
-    url: new URL("https://example.com"),
-    meta: {},
-    isMedia: false
+renderOne(
+  {
+    type: ParsedType.Link,
+    value: {
+      url: new URL("https://example.com"),
+      meta: {},
+      isMedia: false,
+    },
+    raw: "https://example.com",
   },
-  raw: "https://example.com"
-}, renderer)
+  renderer,
+)
 
 // Render multiple elements
-renderMany([
-  {
-    type: ParsedType.Text,
-    value: "Hello ",
-    raw: "Hello "
-  },
-  {
-    type: ParsedType.Topic,
-    value: "nostr",
-    raw: "#nostr"
-  }
-], renderer)
+renderMany(
+  [
+    {
+      type: ParsedType.Text,
+      value: "Hello ",
+      raw: "Hello ",
+    },
+    {
+      type: ParsedType.Topic,
+      value: "nostr",
+      raw: "#nostr",
+    },
+  ],
+  renderer,
+)
 ```
 
 ### Complete Example
+
 ```typescript
 // Parse and process content
 const parsed = parse({
@@ -170,26 +182,25 @@ const parsed = parse({
 
     https://example.com/image.jpg
   `,
-  tags: []
+  tags: [],
 })
 
 // Create custom renderer
 const renderer = makeHtmlRenderer({
   entityBase: "https://example.com/",
   renderLink: (href, display) => {
-    if (href.endsWith('.jpg')) {
+    if (href.endsWith(".jpg")) {
       return `<img src="${href}" alt="${display}">`
     }
     return `<a href="${href}">${display}</a>`
   },
-  renderEntity: (entity) => {
+  renderEntity: entity => {
     return `<span class="entity">${entity.slice(0, 8)}</span>`
-  }
+  },
 })
 
 // Render content
 const html = render(parsed, renderer).toString()
 ```
-
 
 The renderer system provides a flexible way to output parsed content in various formats while maintaining control over the rendering process. Its modular design allows for easy customization and extension for specific application needs.

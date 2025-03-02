@@ -10,7 +10,6 @@ A utility package designed specifically for Svelte applications, providing enhan
 - **Persistence Layer** - Automatic localStorage synchronization
 - **Performance Optimizations** - Throttled updates and efficient subscription management
 
-
 ## Installation
 
 ```bash

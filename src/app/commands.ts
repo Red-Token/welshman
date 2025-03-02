@@ -1,6 +1,6 @@
 import {get} from "svelte/store"
-import {ctx} from "@welshman/lib"
-import {addToListPublicly, removeFromList, makeList, FOLLOWS, MUTES, PINS} from "@welshman/util"
+import {ctx} from "../lib/index.js"
+import {addToListPublicly, removeFromList, makeList, FOLLOWS, MUTES, PINS} from "../util/index.js"
 import {userFollows, userMutes, userPins} from "./user.js"
 import {nip44EncryptToSelf} from "./session.js"
 import {publishThunk} from "./thunk.js"

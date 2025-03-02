@@ -12,7 +12,6 @@ A comprehensive framework for building nostr clients, powering production applic
 - **Profile Management** - User profile handling and metadata
 - **Relay Directories** - Discovery and management of relays
 
-
 ## Installation
 
 ```bash

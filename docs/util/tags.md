@@ -5,6 +5,7 @@ The Tags module provides comprehensive utilities for working with Nostr event ta
 ## Core Functions
 
 ### Basic Tag Operations
+
 ```typescript
 // Get tags by type(s)
 getTags(types: string | string[], tags: string[][]): string[][]
@@ -22,6 +23,7 @@ getTagValue(types: string | string[], tags: string[][]): string | undefined
 ## Tag Type Extractors
 
 ### Event References
+
 ```typescript
 // Get 'e' tags (event references)
 getEventTags(tags: string[][]): string[][]
@@ -33,6 +35,7 @@ getAddressTagValues(tags: string[][]): string[]
 ```
 
 ### Profile References
+
 ```typescript
 // Get 'p' tags (pubkey references)
 getPubkeyTags(tags: string[][]): string[][]
@@ -40,6 +43,7 @@ getPubkeyTagValues(tags: string[][]): string[]
 ```
 
 ### Topics and Relays
+
 ```typescript
 // Get 't' tags (topics/hashtags)
 getTopicTags(tags: string[][]): string[][]
@@ -51,6 +55,7 @@ getRelayTagValues(tags: string[][]): string[]
 ```
 
 ### Groups and Kinds
+
 ```typescript
 // Get group tags
 getGroupTags(tags: string[][]): string[][]
@@ -64,6 +69,7 @@ getKindTagValues(tags: string[][]): number[]
 ## Thread Management
 
 ### Comment Tags
+
 ```typescript
 // Get root and reply references
 getCommentTags(tags: string[][]): {
@@ -78,6 +84,7 @@ getCommentTagValues(tags: string[][]): {
 ```
 
 ### Reply Tags
+
 ```typescript
 // Get detailed reply structure
 getReplyTags(tags: string[][]): {
@@ -106,6 +113,7 @@ tagsFromIMeta(imeta: string[]): string[][]
 ## Usage Examples
 
 ### Basic Tag Handling
+
 ```typescript
 // Get specific tag types
 const pubkeys = getPubkeyTagValues(event.tags)
@@ -113,13 +121,14 @@ const topics = getTopicTagValues(event.tags)
 const relays = getRelayTagValues(event.tags)
 
 // Get multiple tag types
-const refs = getTags(['p', 'e'], event.tags)
+const refs = getTags(["p", "e"], event.tags)
 
 // Get single tag
-const topic = getTagValue('t', event.tags)
+const topic = getTagValue("t", event.tags)
 ```
 
 ### Thread Processing
+
 ```typescript
 // Get thread context
 const {roots, replies} = getReplyTags(event.tags)
@@ -131,19 +140,20 @@ function processThread(tags: string[][]) {
   return {
     rootEvents: thread.roots.map(t => t[1]),
     replyTo: thread.replies.map(t => t[1]),
-    mentions: thread.mentions.map(t => t[1])
+    mentions: thread.mentions.map(t => t[1]),
   }
 }
 ```
 
 ### Tag Collection
+
 ```typescript
 // Collect all references
 function collectReferences(tags: string[][]) {
   return {
     events: getEventTagValues(tags),
     profiles: getPubkeyTagValues(tags),
-    addresses: getAddressTagValues(tags)
+    addresses: getAddressTagValues(tags),
   }
 }
 ```

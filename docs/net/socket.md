@@ -1,4 +1,5 @@
 # Socket
+
 The Socket class is exclusively used by the `Connection` class as its low-level WebSocket manager. It's not meant to be used directly by other classes.
 Its sole purpose is to provide a reliable, manageable WebSocket connection with nostr-specific handling.
 
@@ -13,13 +14,20 @@ export class Socket {
   worker: Worker<Message>
 
   // Core operations
-  open = async () => {/* Initialize WebSocket */}
-  close = async () => {/* Clean shutdown */}
-  send = async (message: Message) => {/* Send with JSON serialization */}
+  open = async () => {
+    /* Initialize WebSocket */
+  }
+  close = async () => {
+    /* Clean shutdown */
+  }
+  send = async (message: Message) => {
+    /* Send with JSON serialization */
+  }
 }
 ```
 
 Key features:
+
 - State tracking
 - Message queuing
 - JSON serialization
@@ -27,6 +35,7 @@ Key features:
 - Connection lifecycle
 
 Think of it as a thin wrapper that turns raw WebSocket connections into something more suitable for nostr:
+
 ```typescript
 // Raw WebSocket
 ws.send(JSON.stringify(["REQ", "sub1", {kinds: [1]}]))

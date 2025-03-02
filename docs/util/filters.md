@@ -7,13 +7,13 @@ It includes support for filter operations, optimization, and time-based filterin
 
 ```typescript
 interface Filter {
-  ids?: string[]         // Match specific event IDs
-  kinds?: number[]       // Match event kinds
-  authors?: string[]     // Match author pubkeys
-  since?: number         // Match events since timestamp
-  until?: number         // Match events until timestamp
-  limit?: number         // Limit number of results
-  search?: string        // Text search
+  ids?: string[] // Match specific event IDs
+  kinds?: number[] // Match event kinds
+  authors?: string[] // Match author pubkeys
+  since?: number // Match events since timestamp
+  until?: number // Match events until timestamp
+  limit?: number // Limit number of results
+  search?: string // Text search
   [key: `#${string}`]: string[] // Tag filters
 }
 ```
@@ -21,6 +21,7 @@ interface Filter {
 ## Filter Operations
 
 ### Match Events
+
 ```typescript
 // Match single filter
 matchFilter(filter: Filter, event: HashedEvent): boolean
@@ -30,6 +31,7 @@ matchFilters(filters: Filter[], event: HashedEvent): boolean
 ```
 
 ### Combine Filters
+
 ```typescript
 // Combine filters with OR operation
 unionFilters(filters: Filter[]): Filter[]
@@ -39,6 +41,7 @@ intersectFilters(groups: Filter[][]): Filter[]
 ```
 
 ### Filter Utilities
+
 ```typescript
 // Get unique filter ID
 getFilterId(filter: Filter): string
@@ -74,9 +77,9 @@ export const DAY = 86400
 // Create basic filter
 const filter: Filter = {
   kinds: [1], // Text notes
-  authors: ['pubkey1', 'pubkey2'],
+  authors: ["pubkey1", "pubkey2"],
   since: now() - 24 * 60 * 60, // Last 24 hours
-  limit: 100
+  limit: 100,
 }
 
 // Match event against filter
@@ -90,15 +93,12 @@ if (matchFilter(filter, event)) {
 ```typescript
 // Union of filters (OR)
 const combinedFilters = unionFilters([
-  { kinds: [1], authors: ['pub1'] },
-  { kinds: [1], authors: ['pub2'] }
+  {kinds: [1], authors: ["pub1"]},
+  {kinds: [1], authors: ["pub2"]},
 ])
 
 // Intersection of filters (AND)
-const intersectedFilters = intersectFilters([
-  [{ kinds: [1] }],
-  [{ authors: ['pub1'] }]
-])
+const intersectedFilters = intersectFilters([[{kinds: [1]}], [{authors: ["pub1"]}]])
 ```
 
 ### Time-based Filtering
@@ -108,7 +108,7 @@ const intersectedFilters = intersectFilters([
 const timeFilter: Filter = {
   since: now() - 7 * DAY, // Last week
   until: now(),
-  limit: 100
+  limit: 100,
 }
 
 // Guess appropriate time window
@@ -120,15 +120,16 @@ const delta = guessFilterDelta([timeFilter])
 ```typescript
 // Filter by tags
 const tagFilter: Filter = {
-  '#t': ['nostr', 'bitcoin'], // Match hashtags
-  '#p': ['pubkey1'],         // Match mentions
-  limit: 50
+  "#t": ["nostr", "bitcoin"], // Match hashtags
+  "#p": ["pubkey1"], // Match mentions
+  limit: 50,
 }
 ```
 
 ## Filter Optimization
 
 ### Trim Filters
+
 ```typescript
 // Trim large filters to reasonable size
 const trimmedFilter = trimFilter(filter)
@@ -136,6 +137,7 @@ const trimmedFilters = trimFilters(filters)
 ```
 
 ### Filter Analysis
+
 ```typescript
 // Get filter generality score
 const score = getFilterGenerality(filter)
@@ -147,19 +149,21 @@ const count = getFilterResultCardinality(filter)
 ## Advanced Usage
 
 ### Reply Chain Filters
+
 ```typescript
 // Get filters for replies
 const replyFilters = getReplyFilters(events, {
   kinds: [1],
-  limit: 100
+  limit: 100,
 })
 ```
 
 ### Repost Handling
+
 ```typescript
 // Add filters for reposts
 const withReposts = addRepostFilters([
-  { kinds: [1] } // Original filter
+  {kinds: [1]}, // Original filter
 ])
 // Results in filters for kinds 1, 6, and 16
 ```

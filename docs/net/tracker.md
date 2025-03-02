@@ -5,7 +5,7 @@ The Tracker is a simple but crucial class that keeps track of which relays an ev
 ## Overview
 
 ```typescript
-import {Tracker} from '@welshman/net'
+import {Tracker} from "@welshman/net"
 
 const tracker = new Tracker()
 
@@ -13,10 +13,10 @@ const tracker = new Tracker()
 tracker.track(eventId, relayUrl)
 
 // Get relays for event
-const relays = tracker.getRelays(eventId)  // Set<string>
+const relays = tracker.getRelays(eventId) // Set<string>
 
 // Get events from relay
-const events = tracker.getIds(relayUrl)    // Set<string>
+const events = tracker.getIds(relayUrl) // Set<string>
 
 // Check specific relay
 const seen = tracker.hasRelay(eventId, relayUrl)
@@ -25,46 +25,47 @@ const seen = tracker.hasRelay(eventId, relayUrl)
 ## Used By
 
 1. **Repository & Sync**
+
 ```typescript
 // In sync operations
 pull({
   events,
   relays,
-  onEvent: (event) => {
+  onEvent: event => {
     tracker.track(event.id, relay)
-  }
+  },
 })
 ```
 
 2. **Subscribe**
+
 ```typescript
 // In @welshman/app subscribe
-sub.on('event', (url, event) => {
+sub.on("event", (url, event) => {
   // Track where we got the event
   tracker.track(event.id, url)
 })
 ```
 
 3. **Publish**
+
 ```typescript
 // In publish operations
-pub.emitter.on('success', (url) => {
+pub.emitter.on("success", url => {
   // Track where we published
   tracker.track(event.id, url)
 })
 ```
 
 4. **Router**
+
 ```typescript
 // Used for relay selection
-const relays = tracker
-  .getRelays(event.id)
-  .filter(url =>
-    isHealthyRelay(url)
-  )
+const relays = tracker.getRelays(event.id).filter(url => isHealthyRelay(url))
 ```
 
 The Tracker:
+
 - Maps events to their source relays
 - Maps relays to their known events
 - Helps optimize relay selection

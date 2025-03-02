@@ -235,7 +235,7 @@ uniq(nums) // => [1, 2, 3]
 
 // Object operations
 const obj = {a: 1, b: 2, c: 3}
-omit(['a', 'b'], obj) // => {c: 3}
+omit(["a", "b"], obj) // => {c: 3}
 
 // Number operations
 add(5, undefined) // => 5
@@ -245,12 +245,15 @@ inc(undefined) // => 1
 ago(DAY, 2) // => timestamp from 2 days ago
 
 // URL operations
-displayUrl('https://www.example.com/') // => 'example.com'
+displayUrl("https://www.example.com/") // => 'example.com'
 
 // Collection operations
-const users = [{id: 1, name: 'Alice'}, {id: 2, name: 'Bob'}]
+const users = [
+  {id: 1, name: "Alice"},
+  {id: 2, name: "Bob"},
+]
 indexBy(u => u.id, users) // => Map(1 => {id: 1, name: 'Alice'}, ...)
 
 // Function utilities
-const throttledFn = throttle(1000, () => console.log('throttled'))
+const throttledFn = throttle(1000, () => console.log("throttled"))
 ```

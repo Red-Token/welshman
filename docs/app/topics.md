@@ -24,6 +24,7 @@ import {topics} from '@welshman/app'
 ```
 
 The store:
+
 - Updates automatically with new events
 - Maintains topic counts
 - Is throttled to prevent excess updates
@@ -33,6 +34,7 @@ The store:
 Think of it as a live tag cloud that stays in sync with your local event cache.
 
 This is commonly used for:
+
 - Tag clouds
 - Topic discovery
 - Content organization

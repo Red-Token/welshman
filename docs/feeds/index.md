@@ -11,7 +11,6 @@ It provides a declarative way to define complex feed compositions using set oper
 - **Feed Utils** - Helper functions for creating and manipulating feeds
 - **Feed Types** - Supports authors, kinds, tags, DVMs, lists, WOT, and more
 
-
 ## Installation
 
 ```bash

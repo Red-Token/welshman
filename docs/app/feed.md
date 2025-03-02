@@ -7,18 +7,18 @@ The feed system provides a powerful way to compose and load complex `Nostr` quer
 The `controller.load()` function is the main interface for fetching events from a feed. It handles all the complexity of relay selection, subscription management, and event filtering.
 
 ```typescript
-import {createFeedController} from '@welshman/app'
-import {scopeFeed, wotFeed} from '@welshman/feeds'
+import {createFeedController} from "@welshman/app"
+import {scopeFeed, wotFeed} from "@welshman/feeds"
 
 const controller = createFeedController({
   // Define what to load
   feed: scopeFeed("follows"),
 
   // Optional configurations
-  closeOnEose: true,     // Close after getting all events
-  onEvent: event => {},  // Handle events as they arrive
-  onEose: url => {},     // Handle EOSE from each relay
-  onComplete: () => {},  // Called when all relays complete
+  closeOnEose: true, // Close after getting all events
+  onEvent: event => {}, // Handle events as they arrive
+  onEose: url => {}, // Handle EOSE from each relay
+  onComplete: () => {}, // Called when all relays complete
 })
 
 // Load first 20 events
@@ -29,6 +29,7 @@ const moreEvents = await controller.load(20)
 ```
 
 The controller maintains its state between loads, so subsequent calls will:
+
 - Continue from last position
 - Use appropriate time windows
 - Skip already seen events
@@ -80,6 +81,7 @@ const HomeFeed = {
 ```
 
 Key points about `controller.load()`:
+
 - Takes a limit parameter for batch size
 - Returns a promise of loaded events
 - Can be called repeatedly for pagination
@@ -88,6 +90,7 @@ Key points about `controller.load()`:
 - Deduplicates events
 
 The controller is stateful and maintains:
+
 - Current time window
 - Seen events
 - Active subscriptions

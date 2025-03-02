@@ -5,30 +5,27 @@ The `Nip46Signer` implements remote signing capabilities through the Nostr Conne
 ## Architecture
 
 The implementation consists of two main classes:
+
 - `Nip46Broker`: Handles the communication with the remote signer
 - `Nip46Signer`: Implements the `ISigner` interface using the broker
 
 ## Getting Started
 
 ```typescript
-import {
-  makeSecret,
-  Nip46Broker,
-  Nip46Signer
-} from '@welshman/signer'
-import { createEvent, NOTE } from '@welshman/util'
+import {makeSecret, Nip46Broker, Nip46Signer} from "@welshman/signer"
+import {createEvent, NOTE} from "@welshman/util"
 
 async function connectToRemoteSigner() {
   // Initial setup
   const clientSecret = makeSecret()
-  const relays = ['wss://relay.example.com']
-  const broker = Nip46Broker.get({ relays, clientSecret })
+  const relays = ["wss://relay.example.com"]
+  const broker = Nip46Broker.get({relays, clientSecret})
   const signer = new Nip46Signer(broker)
 
   // Generate connection URL
   const ncUrl = await broker.makeNostrconnectUrl({
     name: "My App",
-    description: "Testing remote signing"
+    description: "Testing remote signing",
   })
 
   // Show URL to user (e.g., as QR code)
@@ -36,19 +33,16 @@ async function connectToRemoteSigner() {
 
   try {
     // Wait for connection
-    const response = await broker.waitForNostrconnect(
-      ncUrl,
-      new AbortController()
-    )
+    const response = await broker.waitForNostrconnect(ncUrl, new AbortController())
 
     // Store signer info for later
     const bunkerUrl = broker.getBunkerUrl()
-    localStorage.setItem('bunkerUrl', bunkerUrl)
+    localStorage.setItem("bunkerUrl", bunkerUrl)
 
     // Use the signer
     const event = createEvent(NOTE, {
       content: "Signed with remote signer!",
-      tags: [["t", "test"]]
+      tags: [["t", "test"]],
     })
     const signed = await signer.sign(event)
 
@@ -63,20 +57,16 @@ async function connectToRemoteSigner() {
 
 // Reconnecting with saved bunker URL
 async function reconnect() {
-  const bunkerUrl = localStorage.getItem('bunkerUrl')
+  const bunkerUrl = localStorage.getItem("bunkerUrl")
   if (!bunkerUrl) return null
 
-  const {
-    signerPubkey,
-    connectSecret,
-    relays
-  } = Nip46Broker.parseBunkerUrl(bunkerUrl)
+  const {signerPubkey, connectSecret, relays} = Nip46Broker.parseBunkerUrl(bunkerUrl)
 
   const broker = Nip46Broker.get({
     relays,
     clientSecret: makeSecret(),
     signerPubkey,
-    connectSecret
+    connectSecret,
   })
 
   return new Nip46Signer(broker)

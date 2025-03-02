@@ -43,11 +43,7 @@ zappers → zappersByLnurl → deriveZapper → loadZapper
 ### Loading and Displaying Profiles
 
 ```typescript
-import {
-  deriveProfile,
-  loadProfile,
-  displayProfile
-} from '@welshman/app'
+import {deriveProfile, loadProfile, displayProfile} from "@welshman/app"
 
 // In a Svelte component
 let profile
@@ -59,7 +55,7 @@ $: profile = $deriveProfile(pubkey)
 onMount(() => {
   loadProfile(pubkey, {
     // Optional request params
-    relays: ["wss://relay.example.com"]
+    relays: ["wss://relay.example.com"],
   })
 })
 
@@ -74,8 +70,8 @@ import {
   deriveRelaySelections,
   loadRelaySelections,
   getReadRelayUrls,
-  getWriteRelayUrls
-} from '@welshman/app'
+  getWriteRelayUrls,
+} from "@welshman/app"
 
 // Get user's relay preferences
 const selections = deriveRelaySelections(pubkey).get()
@@ -88,12 +84,11 @@ const readRelays = getReadRelayUrls(selections)
 const writeRelays = getWriteRelayUrls(selections)
 
 // Use with router
-const relays = ctx.app.router
-  .FromPubkey(pubkey)
-  .getUrls()
+const relays = ctx.app.router.FromPubkey(pubkey).getUrls()
 ```
 
 Each collection automatically:
+
 - Caches to IndexedDB
 - Deduplicates network requests
 - Updates reactively

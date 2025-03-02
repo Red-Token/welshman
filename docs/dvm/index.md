@@ -5,11 +5,11 @@
 ## What is a DVM?
 
 A Data Vending Machine (DVM) is a Nostr service that:
+
 - Listens for specific kinds of events
 - Processes these events according to defined rules
 - Responds with new events containing processed data
 - Optionally provides progress updates during processing
-
 
 ## Installation
 

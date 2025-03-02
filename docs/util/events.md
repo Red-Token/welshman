@@ -53,16 +53,17 @@ type TrustedEvent = HashedEvent & {
 ## Event Creation
 
 ### Create Basic Event
+
 ```typescript
-import { createEvent } from '@welshman/util'
+import {createEvent} from "@welshman/util"
 
 const event = createEvent(
   1, // kind
   {
     content: "Hello Nostr!",
     tags: [["t", "nostr"]],
-    created_at: now() // Optional, defaults to current time
-  }
+    created_at: now(), // Optional, defaults to current time
+  },
 )
 ```
 
@@ -95,6 +96,7 @@ asTrustedEvent(event): TrustedEvent
 ## Event Utilities
 
 ### Event Validation
+
 ```typescript
 // Check if event has valid signature
 hasValidSignature(event: SignedEvent): boolean
@@ -104,6 +106,7 @@ getIdentifier(event: EventTemplate): string | undefined
 ```
 
 ### Event References
+
 ```typescript
 // Get event ID or address
 getIdOrAddress(event: HashedEvent): string
@@ -113,6 +116,7 @@ getIdAndAddress(event: HashedEvent): string[]
 ```
 
 ### Event Type Checking
+
 ```typescript
 // Check event properties
 isEphemeral(event: EventTemplate): boolean
@@ -122,6 +126,7 @@ isParameterizedReplaceable(event: EventTemplate): boolean
 ```
 
 ### Thread & Reply Handling
+
 ```typescript
 // Get thread information
 getAncestors(event: EventTemplate): { roots: string[], replies: string[] }
@@ -144,7 +149,7 @@ isChildOf(child: EventTemplate, parent: HashedEvent): boolean
 // Create new event
 const event = createEvent(1, {
   content: "Hello world!",
-  tags: [["t", "greeting"]]
+  tags: [["t", "greeting"]],
 })
 
 // Process based on type

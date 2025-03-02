@@ -16,16 +16,18 @@ class FeedCompiler {
 ## Feed Compilation Process
 
 The compiler transforms feed definitions into `RequestItem[]`, where each item contains:
+
 ```typescript
 type RequestItem = {
-  relays?: string[]    // Specific relays to query
-  filters?: Filter[]   // Nostr filters to apply
+  relays?: string[] // Specific relays to query
+  filters?: Filter[] // Nostr filters to apply
 }
 ```
 
 ## Examples
 
 ### Basic Feed Compilation
+
 ```typescript
 const compiler = new FeedCompiler(options)
 
@@ -36,16 +38,13 @@ const requests = await compiler.compile(feed)
 ```
 
 ### Complex Feed Compilation
+
 ```typescript
 // Complex feed with multiple operations
 const feed = [
   FeedType.Intersection,
   [FeedType.Kind, 1],
-  [
-    FeedType.Union,
-    [FeedType.Scope, Scope.Follows],
-    [FeedType.List, { addresses: ["trending"] }]
-  ]
+  [FeedType.Union, [FeedType.Scope, Scope.Follows], [FeedType.List, {addresses: ["trending"]}]],
 ]
 
 const requests = await compiler.compile(feed)
@@ -53,6 +52,7 @@ const requests = await compiler.compile(feed)
 ```
 
 ### DVM Integration
+
 ```typescript
 const feed = [
   FeedType.DVM,
@@ -60,9 +60,9 @@ const feed = [
     kind: 5300,
     mappings: [
       ["p", [FeedType.Author]],
-      ["t", [FeedType.Tag, "#t"]]
-    ]
-  }
+      ["t", [FeedType.Tag, "#t"]],
+    ],
+  },
 ]
 
 const requests = await compiler.compile(feed)
@@ -74,12 +74,14 @@ const requests = await compiler.compile(feed)
 ### Optimization Strategies
 
 1. **Filter Merging**: Similar filters are combined when possible
+
    ```typescript
    // Before: [{ authors: ["a"] }, { authors: ["b"] }]
    // After: [{ authors: ["a", "b"] }]
    ```
 
 2. **Relay Grouping**: Requests are grouped by relay where possible
+
    ```typescript
    // Filters are organized by relay to minimize connections
    filtersByRelay: Map<string, Filter[]>
@@ -93,6 +95,7 @@ const requests = await compiler.compile(feed)
 ### Error Handling
 
 The compiler includes various safety checks:
+
 ```typescript
 canCompile(feed: Feed): boolean {
   // Checks if feed type is supported

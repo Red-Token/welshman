@@ -9,18 +9,18 @@ The LRU (Least Recently Used) Cache implementation provides efficient caching wi
 const cache = new LRUCache<string, number>(3)
 
 // Add items
-cache.set('a', 1)
-cache.set('b', 2)
-cache.set('c', 3)
+cache.set("a", 1)
+cache.set("b", 2)
+cache.set("c", 3)
 
 // Access items
-cache.get('a') // => 1
+cache.get("a") // => 1
 
 // Check if key exists
-cache.has('b') // => true
+cache.has("b") // => true
 
 // Adding beyond max size evicts least recently used
-cache.set('d', 4) // Evicts oldest item
+cache.set("d", 4) // Evicts oldest item
 ```
 
 ## API Reference
@@ -36,21 +36,27 @@ Creates a new LRU cache with specified maximum size.
 ### Methods
 
 #### set(key: T, value: U)
+
 ```typescript
 set(key: T, value: U): void
 ```
+
 Adds or updates an item in the cache. If cache is at maximum size, evicts least recently used item.
 
 #### get(key: T)
+
 ```typescript
 get(key: T): U | undefined
 ```
+
 Retrieves item from cache. Also marks item as recently used.
 
 #### has(key: T)
+
 ```typescript
 has(key: T): boolean
 ```
+
 Checks if key exists in cache without affecting usage tracking.
 
 ## Cache Decorator
@@ -75,11 +81,11 @@ function cached<T, V, Args extends any[]>({
 // Create cached function
 const getUser = cached({
   maxSize: 1000,
-  getKey: (args) => args[0], // Use first argument as cache key
-  getValue: async (args) => {
+  getKey: args => args[0], // Use first argument as cache key
+  getValue: async args => {
     const [id] = args
     return await fetchUser(id)
-  }
+  },
 })
 
 // Use cached function
@@ -92,13 +98,11 @@ const user2 = await getUser(123) // Returns cached result
 For basic caching needs, there's also a simplified cache creator:
 
 ```typescript
-function simpleCache<V, Args extends any[]>(
-  getValue: (args: Args) => V
-) {
+function simpleCache<V, Args extends any[]>(getValue: (args: Args) => V) {
   return cached({
     maxSize: 100000,
-    getKey: xs => xs.join(':'),
-    getValue
+    getKey: xs => xs.join(":"),
+    getValue,
   })
 }
 

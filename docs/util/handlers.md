@@ -5,28 +5,28 @@ Handlers are events that describe which kinds a given application can display.
 
 This module provides utilities for transforming these events into structured handler objects that applications can easily process.
 
-
 ## Types
 
 ### Handler Definition
 
 ```typescript
 type Handler = {
-  kind: number          // Event kind this handler can process
-  name: string          // Display name of the handler
-  about: string         // Description
-  image: string         // Icon or image URL
-  identifier: string    // Unique identifier (d-tag)
-  event: TrustedEvent   // Original handler event
-  website?: string      // Optional website URL
-  lud16?: string        // Optional Lightning address
-  nip05?: string        // Optional NIP-05 identifier
+  kind: number // Event kind this handler can process
+  name: string // Display name of the handler
+  about: string // Description
+  image: string // Icon or image URL
+  identifier: string // Unique identifier (d-tag)
+  event: TrustedEvent // Original handler event
+  website?: string // Optional website URL
+  lud16?: string // Optional Lightning address
+  nip05?: string // Optional NIP-05 identifier
 }
 ```
 
 ## Core Functions
 
 ### Reading Handlers
+
 ```typescript
 function readHandlers(event: TrustedEvent): Handler[]
 
@@ -38,6 +38,7 @@ handlers.forEach(handler => {
 ```
 
 ### Handler Identification
+
 ```typescript
 function getHandlerKey(handler: Handler): string
 // Returns "kind:address" format
@@ -47,28 +48,27 @@ function getHandlerAddress(event: TrustedEvent): string | undefined
 ```
 
 ### Display Formatting
+
 ```typescript
-function displayHandler(
-  handler?: Handler,
-  fallback = ""
-): string
+function displayHandler(handler?: Handler, fallback = ""): string
 ```
 
 ## Usage Examples
 
 ### Reading Handler Information
+
 ```typescript
 const event = {
   kind: 31990, // Handler Information kind
   content: JSON.stringify({
     name: "Note Viewer",
     about: "Displays text notes with formatting",
-    image: "https://example.com/icon.png"
+    image: "https://example.com/icon.png",
   }),
   tags: [
-    ['k', '1'], // Handles kind 1 (text notes)
-    ['d', 'note-viewer']
-  ]
+    ["k", "1"], // Handles kind 1 (text notes)
+    ["d", "note-viewer"],
+  ],
 }
 
 const handlers = readHandlers(event)
@@ -76,6 +76,7 @@ const handlers = readHandlers(event)
 ```
 
 ### Working with Handlers
+
 ```typescript
 // Get unique handler identifier
 const key = getHandlerKey(handler)
@@ -110,15 +111,14 @@ function processHandlerEvent(event: TrustedEvent) {
       about: handler.about,
       image: handler.image,
       website: handler.website,
-      address: getHandlerAddress(handler.event)
+      address: getHandlerAddress(handler.event),
     })
   })
 }
 
 // Find handler for event kind
 function findHandler(kind: number): Handler | undefined {
-  return Array.from(handlerRegistry.values())
-    .find(h => h.kind === kind)
+  return Array.from(handlerRegistry.values()).find(h => h.kind === kind)
 }
 
 // Display handler information
@@ -127,7 +127,7 @@ function renderHandler(handler: Handler) {
     title: displayHandler(handler, "Unknown"),
     description: handler.about,
     icon: handler.image,
-    website: handler.website || null
+    website: handler.website || null,
   }
 }
 ```

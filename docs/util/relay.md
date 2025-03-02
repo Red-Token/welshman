@@ -6,6 +6,7 @@ The Relay class extends EventEmitter to provide event-based communication.
 ## Core Components
 
 ### Relay Class
+
 ```typescript
 class Relay<E extends HashedEvent = TrustedEvent> extends Emitter {
   constructor(readonly repository: Repository<E>)
@@ -19,15 +20,16 @@ class Relay<E extends HashedEvent = TrustedEvent> extends Emitter {
 ```
 
 ### Relay Profile
+
 ```typescript
 interface RelayProfile {
-  url: string              // Relay URL
-  name?: string           // Display name
-  description?: string    // Description
-  pubkey?: string        // Operator's pubkey
-  contact?: string       // Contact information
-  software?: string      // Software name
-  version?: string       // Software version
+  url: string // Relay URL
+  name?: string // Display name
+  description?: string // Description
+  pubkey?: string // Operator's pubkey
+  contact?: string // Contact information
+  software?: string // Software name
+  version?: string // Software version
   supported_nips?: number[] // Supported NIPs
   limitation?: {
     min_pow_difficulty?: number
@@ -45,7 +47,7 @@ async function getRelayProfile(url: string): Promise<RelayProfile | null> {
   try {
     const normalized = normalizeRelayUrl(url)
     // Convert ws/wss to http/https
-    const httpUrl = normalized.replace(/^ws(s)?:\/\//, 'http$1://')
+    const httpUrl = normalized.replace(/^ws(s)?:\/\//, "http$1://")
 
     // Fetch relay information document
     const response = await fetch(`${httpUrl}`)
@@ -60,7 +62,7 @@ async function getRelayProfile(url: string): Promise<RelayProfile | null> {
       software: info.software,
       version: info.version,
       supported_nips: info.supported_nips,
-      limitation: info.limitation
+      limitation: info.limitation,
     }
   } catch (error) {
     console.error(`Failed to fetch relay info for ${url}:`, error)
@@ -72,6 +74,7 @@ async function getRelayProfile(url: string): Promise<RelayProfile | null> {
 ## URL Utilities
 
 ### URL Validation
+
 ```typescript
 // Check if URL is valid relay URL
 isRelayUrl(url: string): boolean
@@ -90,6 +93,7 @@ isShareableRelayUrl(url: string): boolean
 ```
 
 ### URL Formatting
+
 ```typescript
 // Normalize relay URL
 normalizeRelayUrl(url: string): string
@@ -101,10 +105,10 @@ displayRelayUrl(url: string): string
 displayRelayProfile(profile?: RelayProfile, fallback = ""): string
 ```
 
-
 ## Usage Examples
 
 ### URL Processing
+
 ```typescript
 // Validate relay URL
 if (isRelayUrl(url)) {
@@ -130,7 +134,7 @@ const relay = new Relay(repository)
 // Subscribe to events
 relay.send("REQ", "sub_id", {
   kinds: [1],
-  limit: 100
+  limit: 100,
 })
 
 // Listen for events

@@ -6,29 +6,32 @@ It includes support for progress tracking and result handling.
 ## Core Types
 
 ### DVMRequestOptions
+
 ```typescript
 type DVMRequestOptions = {
-  event: SignedEvent       // The event to send to the DVM
-  relays: string[]        // Relays to use
-  timeout?: number        // Request timeout in milliseconds
-  autoClose?: boolean     // Auto-close subscription after result
+  event: SignedEvent // The event to send to the DVM
+  relays: string[] // Relays to use
+  timeout?: number // Request timeout in milliseconds
+  autoClose?: boolean // Auto-close subscription after result
   reportProgress?: boolean // Listen for progress events
 }
 ```
 
 ### DVMEvent Enum
+
 ```typescript
 enum DVMEvent {
   Progress = "progress", // DVM progress updates (kind 7000)
-  Result = "result"     // Final DVM result
+  Result = "result", // Final DVM result
 }
 ```
 
 ## Making DVM Requests
 
 ### Basic Usage
+
 ```typescript
-import { makeDvmRequest, DVMEvent } from '@welshman/dvm'
+import {makeDvmRequest, DVMEvent} from "@welshman/dvm"
 
 const request = makeDvmRequest({
   event: signedEvent,
@@ -38,30 +41,32 @@ const request = makeDvmRequest({
 
 // Handle results
 request.emitter.on(DVMEvent.Result, (url, event) => {
-  console.log('Received result:', event)
+  console.log("Received result:", event)
 })
 
 // Handle progress updates
 request.emitter.on(DVMEvent.Progress, (url, event) => {
-  console.log('Progress update:', event)
+  console.log("Progress update:", event)
 })
 ```
 
 ## Response Handling
 
 ### Result Events
+
 ```typescript
 request.emitter.on(DVMEvent.Result, (url: string, event: TrustedEvent) => {
   // Handle the DVM result
   const result = JSON.parse(event.content)
 
   // Process tags
-  const requestTag = event.tags.find(t => t[0] === 'request')
-  const expirationTag = event.tags.find(t => t[0] === 'expiration')
+  const requestTag = event.tags.find(t => t[0] === "request")
+  const expirationTag = event.tags.find(t => t[0] === "expiration")
 })
 ```
 
 ### Progress Updates
+
 ```typescript
 request.emitter.on(DVMEvent.Progress, (url: string, event: TrustedEvent) => {
   // Handle progress update (kind 7000)
@@ -73,15 +78,15 @@ request.emitter.on(DVMEvent.Progress, (url: string, event: TrustedEvent) => {
 ## Complete Example
 
 ```typescript
-import { makeDvmRequest, DVMEvent } from '@welshman/dvm'
-import { createEvent, finalizeEvent } from '@welshman/util'
+import {makeDvmRequest, DVMEvent} from "@welshman/dvm"
+import {createEvent, finalizeEvent} from "@welshman/util"
 
 async function queryDVM() {
   // Create the request event
   const event = createEvent(5001, {
     content: JSON.stringify({
-      query: "search terms"
-    })
+      query: "search terms",
+    }),
   })
 
   // Sign the event
@@ -92,19 +97,19 @@ async function queryDVM() {
     event: signedEvent,
     relays: ["wss://relay.example.com"],
     timeout: 30000,
-    reportProgress: true
+    reportProgress: true,
   })
 
   // Handle progress updates
   dvmRequest.emitter.on(DVMEvent.Progress, (url, event) => {
-    console.log('Progress:', event.content)
+    console.log("Progress:", event.content)
   })
 
   // Return a promise that resolves with the result
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       dvmRequest.sub.close()
-      reject(new Error('DVM request timeout'))
+      reject(new Error("DVM request timeout"))
     }, 30000)
 
     dvmRequest.emitter.on(DVMEvent.Result, (url, event) => {
@@ -114,6 +119,5 @@ async function queryDVM() {
   })
 }
 ```
-
 
 This module simplifies the process of making requests to DVMs while providing flexibility in handling responses and progress updates.
