@@ -2,3 +2,5 @@ build
 normalize-url
 __tests__
 Negentropy.ts
+docs
+vitest.config.ts

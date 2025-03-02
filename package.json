@@ -1,19 +1,13 @@
 {
   "name": "@red-token/welshman",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "license": "MIT",
   "description": "A collection of svelte stores for use in building nostr client applications.",
   "publishConfig": {
     "access": "public"
   },
   "type": "module",
-  "types": "./build/src/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./build/src/index.d.ts",
-      "import": "./build/src/index.js",
-      "require": "./build/src/index.js"
-    },
     "./app": {
       "types": "./build/src/app/index.d.ts",
       "import": "./build/src/app/index.js",
@@ -70,55 +64,53 @@
     "docs:preview": "vitepress preview docs",
     "pub": "npm run lint && npm run build && npm publish",
     "build": "gts clean && tsc",
+    "buildtest": "gts clean && tsc --noImplicitAny false",
     "lint": "gts lint",
     "format": "prettier --write .",
     "fix": "gts fix"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/coracle-social/skiff.git"
+    "url": "https://github.com/red-token/welshman"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.0.5",
     "gts": "^6.0.2",
     "happy-dom": "^16.8.1",
-    "vitest": "^3.0.5",
+    "mocha": "^10.7.3",
     "typedoc": "^0.27.9",
     "typedoc-plugin-markdown": "^4.4.2",
     "typedoc-vitepress-theme": "^1.1.2",
     "typescript": "^5.6.3",
     "vitepress": "^1.6.3",
-    "mocha": "^10.7.3"
+    "vitest": "^3.0.5"
   },
   "files": [
     "build/**/*",
+    "docs/**/*",
     "package.json",
     "README.md",
     "LICENSE"
   ],
   "dependencies": {
-    "@noble/curves": "^1.7.0",
-    "@types/throttle-debounce": "^5.0.2",
-    "@welshman/dvm": "~0.0.13",
-    "@welshman/feeds": "~0.0.30",
-    "@welshman/lib": "~0.0.40",
-    "@welshman/net": "~0.0.46",
-    "@welshman/signer": "~0.0.19",
-    "@welshman/store": "~0.0.15",
-    "@welshman/util": "~0.0.59",
-    "fuse.js": "^7.0.0",
-    "idb": "^8.0.0",
-    "svelte": "^4.2.19",
-    "throttle-debounce": "^5.0.2",
     "@braintree/sanitize-url": "^7.0.2",
+    "@noble/curves": "^1.7.0",
     "@noble/hashes": "^1.6.1",
     "@scure/base": "^1.1.6",
     "@types/events": "^3.0.3",
-    "events": "^3.3.0",
-    "isomorphic-ws": "^5.0.0",
-    "ws": "^8.17.1",
+    "@types/throttle-debounce": "^5.0.2",
     "@types/ws": "^8.5.13",
-    "nostr-tools": "^2.7.2"
+    "events": "^3.3.0",
+    "fuse.js": "^7.0.0",
+    "idb": "^8.0.0",
+    "isomorphic-ws": "^5.0.0",
+    "nostr-tools": "^2.7.2",
+    "svelte": "^4.2.19",
+    "throttle-debounce": "^5.0.2",
+    "ws": "^8.17.1"
   },
   "peerDependencies": {
     "nostr-signer-capacitor-plugin": "^0.0.3"

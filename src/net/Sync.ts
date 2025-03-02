@@ -22,8 +22,8 @@ export const diff = async ({relays, filters, events}: DiffOpts) => {
             await new Promise<void>((resolve, reject) => {
               executor.diff(filter, events, {
                 onClose: resolve,
-                onError: (url, message) => reject(message),
-                onMessage: (url, message) => {
+                onError: (url: any, message: any) => reject(message), //TODO fix it
+                onMessage: (url: any, message: any) => {
                   for (const id of message.have) {
                     have.add(id)
                   }

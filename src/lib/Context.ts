@@ -14,7 +14,7 @@ import type {Context} from "../lib/index.js"
  *   }
  * }
  */
-export const ctx: Context = {}
+export const ctx: any = {}
 
 /**
  * Adds data to ctx.
