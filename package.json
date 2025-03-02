@@ -1,8 +1,65 @@
 {
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "@redtoken/welshman",
+  "version": "0.2.0",
+  "license": "MIT",
+  "description": "A collection of svelte stores for use in building nostr client applications.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "types": "./build/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/src/index.d.ts",
+      "import": "./build/src/index.js",
+      "require": "./build/src/index.js"
+    },
+    "./app": {
+      "types": "./build/src/app/index.d.ts",
+      "import": "./build/src/app/index.js",
+      "require": "./build/src/app/index.js"
+    },
+    "./content": {
+      "types": "./build/src/content/index.d.ts",
+      "import": "./build/src/content/index.js",
+      "require": "./build/src/content/index.js"
+    },
+    "./editor": {
+      "types": "./build/src/editor/index.d.ts",
+      "import": "./build/src/editor/index.js",
+      "require": "./build/src/editor/index.js"
+    },
+    "./feeds": {
+      "types": "./build/src/feeds/index.d.ts",
+      "import": "./build/src/feeds/index.js",
+      "require": "./build/src/feeds/index.js"
+    },
+    "./lib": {
+      "types": "./build/src/lib/index.d.ts",
+      "import": "./build/src/lib/index.js",
+      "require": "./build/src/lib/index.js"
+    },
+    "./net": {
+      "types": "./build/src/net/index.d.ts",
+      "import": "./build/src/net/index.js",
+      "require": "./build/src/net/index.js"
+    },
+    "./signer": {
+      "types": "./build/src/signer/index.d.ts",
+      "import": "./build/src/signer/index.js",
+      "require": "./build/src/signer/index.js"
+    },
+    "./store": {
+      "types": "./build/src/store/index.d.ts",
+      "import": "./build/src/store/index.js",
+      "require": "./build/src/store/index.js"
+    },
+    "./util": {
+      "types": "./build/src/util/index.d.ts",
+      "import": "./build/src/util/index.js",
+      "require": "./build/src/util/index.js"
+    }
+  },
   "scripts": {
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -10,7 +67,11 @@
     "predocs": "typedoc",
     "docs:dev": "vitepress dev docs",
     "docs:build": "npx typedoc && vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "pub": "npm run lint && npm run build && npm publish",
+    "build": "gts clean && tsc",
+    "lint": "gts lint",
+    "fix": "gts fix"
   },
   "repository": {
     "type": "git",
@@ -25,6 +86,42 @@
     "typedoc-plugin-markdown": "^4.4.2",
     "typedoc-vitepress-theme": "^1.1.2",
     "typescript": "^5.6.3",
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.3",
+    "mocha": "^10.7.3"
+  },
+  "files": [
+    "build/**/*",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@noble/curves": "^1.7.0",
+    "@types/throttle-debounce": "^5.0.2",
+    "@welshman/dvm": "~0.0.13",
+    "@welshman/feeds": "~0.0.30",
+    "@welshman/lib": "~0.0.40",
+    "@welshman/net": "~0.0.46",
+    "@welshman/signer": "~0.0.19",
+    "@welshman/store": "~0.0.15",
+    "@welshman/util": "~0.0.59",
+    "fuse.js": "^7.0.0",
+    "idb": "^8.0.0",
+    "svelte": "^4.2.19",
+    "throttle-debounce": "^5.0.2",
+    "@braintree/sanitize-url": "^7.0.2",
+    "nostr-tools": "^2.7.2",
+    "@noble/hashes": "^1.6.1",
+    "@scure/base": "^1.1.6",
+    "@types/events": "^3.0.3",
+    "events": "^3.3.0",
+    "isomorphic-ws": "^5.0.0",
+    "ws": "^8.17.1",
+    "@types/ws": "^8.5.13",
+    "@welshman/lib": "~0.0.40",
+    "nostr-tools": "^2.7.2"
+  },
+  "peerDependencies": {
+    "nostr-signer-capacitor-plugin": "^0.0.3"
   }
 }

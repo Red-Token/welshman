@@ -1,9 +1,9 @@
 {
-  "name": "@welshman/store",
-  "version": "0.0.16",
+  "name": "@welshman/dvm",
+  "version": "0.0.14",
   "author": "hodlbod",
   "license": "MIT",
-  "description": "A collection of utilities based on svelte/store for use with welshman",
+  "description": "A collection of utilities for building nostr DVMs.",
   "publishConfig": {
     "access": "public"
   },
@@ -26,8 +26,6 @@
     "fix": "gts fix"
   },
   "dependencies": {
-    "@welshman/lib": "~0.0.40",
-    "@welshman/util": "~0.0.59",
-    "svelte": "^4.2.18"
+   
   }
 }
