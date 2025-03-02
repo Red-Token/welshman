@@ -1,5 +1,5 @@
 {
-  "name": "@welshman/welshman",
+  "name": "@red-token/welshman",
   "version": "0.2.0",
   "license": "MIT",
   "description": "A collection of svelte stores for use in building nostr client applications.",
@@ -111,7 +111,6 @@
     "svelte": "^4.2.19",
     "throttle-debounce": "^5.0.2",
     "@braintree/sanitize-url": "^7.0.2",
-    "nostr-tools": "^2.7.2",
     "@noble/hashes": "^1.6.1",
     "@scure/base": "^1.1.6",
     "@types/events": "^3.0.3",
@@ -119,7 +118,6 @@
     "isomorphic-ws": "^5.0.0",
     "ws": "^8.17.1",
     "@types/ws": "^8.5.13",
-    "@welshman/lib": "~0.0.40",
     "nostr-tools": "^2.7.2"
   },
   "peerDependencies": {
