@@ -1,4 +1,4 @@
-import type {TrustedEvent, Filter} from "@welshman/util"
+import type {TrustedEvent, Filter} from "../util/index.js"
 
 export enum FeedType {
   Address = "address",

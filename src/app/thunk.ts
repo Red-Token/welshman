@@ -1,8 +1,8 @@
 import {writable, derived, get} from "svelte/store"
 import type {Writable, Readable} from "svelte/store"
-import {Worker, dissoc, identity, uniq, defer, sleep, assoc} from "@welshman/lib"
-import type {Deferred} from "@welshman/lib"
-import {stamp, own, hash} from "@welshman/signer"
+import {Worker, dissoc, identity, uniq, defer, sleep, assoc} from "../lib/index.js"
+import type {Deferred} from "../lib/index.js"
+import {stamp, own, hash} from "../signer/index.js"
 import type {
   TrustedEvent,
   HashedEvent,
@@ -10,15 +10,15 @@ import type {
   SignedEvent,
   StampedEvent,
   OwnedEvent,
-} from "@welshman/util"
+} from "../util/index.js"
 import {
   isStampedEvent,
   isOwnedEvent,
   isHashedEvent,
   isUnwrappedEvent,
   isSignedEvent,
-} from "@welshman/util"
-import {publish, PublishStatus} from "@welshman/net"
+} from "../util/index.js"
+import {publish, PublishStatus} from "../net/index.js"
 import {repository, tracker} from "./core.js"
 import {pubkey, getSession, getSigner} from "./session.js"
 

@@ -1,4 +1,4 @@
-import {uniq} from "@welshman/lib"
+import {uniq} from "../lib/index.js"
 import {
   INBOX_RELAYS,
   RELAYS,
@@ -8,10 +8,10 @@ import {
   getListTags,
   getRelayTags,
   getRelayTagValues,
-} from "@welshman/util"
-import type {TrustedEvent, PublishedList, List} from "@welshman/util"
-import type {SubscribeRequestWithHandlers} from "@welshman/net"
-import {deriveEventsMapped} from "@welshman/store"
+} from "../util/index.js"
+import type {TrustedEvent, PublishedList, List} from "../util/index.js"
+import type {SubscribeRequestWithHandlers} from "../net/index.js"
+import {deriveEventsMapped} from "../store/index.js"
 import {repository} from "./core.js"
 import {load} from "./subscribe.js"
 import {collection} from "./collection.js"

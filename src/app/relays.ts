@@ -1,10 +1,10 @@
 import {writable, derived} from "svelte/store"
-import {withGetter} from "@welshman/store"
-import {ctx, groupBy, indexBy, batch, now, ago, uniq, batcher, postJson} from "@welshman/lib"
-import type {RelayProfile} from "@welshman/util"
-import {normalizeRelayUrl, displayRelayUrl, displayRelayProfile} from "@welshman/util"
-import {ConnectionEvent} from "@welshman/net"
-import type {Connection, Message} from "@welshman/net"
+import {withGetter} from "../store/index.js"
+import {ctx, groupBy, indexBy, batch, now, ago, uniq, batcher, postJson} from "../lib/index.js"
+import type {RelayProfile} from "../util/index.js"
+import {normalizeRelayUrl, displayRelayUrl, displayRelayProfile} from "../util/index.js"
+import {ConnectionEvent} from "../net/index.js"
+import type {Connection, Message} from "../net/index.js"
 import {collection} from "./collection.js"
 
 export type RelayStats = {

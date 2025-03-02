@@ -1,5 +1,5 @@
 import {verifiedSymbol, getEventHash, verifyEvent} from "nostr-tools/pure"
-import {cached, mapVals, first, pick, now} from "@welshman/lib"
+import {cached, mapVals, first, pick, now} from "../lib/index.js"
 import {getReplyTagValues, getCommentTagValues} from "./Tags.js"
 import {getAddress, Address} from "./Address.js"
 import {

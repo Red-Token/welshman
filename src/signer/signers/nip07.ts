@@ -1,4 +1,4 @@
-import {StampedEvent} from "@welshman/util"
+import {StampedEvent} from "../../util/index.js"
 import {hash, own, Sign, ISigner, EncryptionImplementation} from "../util.js"
 
 export type Nip07 = {

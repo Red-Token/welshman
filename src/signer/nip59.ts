@@ -1,4 +1,4 @@
-import {UnwrappedEvent, SignedEvent, HashedEvent, StampedEvent, WRAP, SEAL} from "@welshman/util"
+import {UnwrappedEvent, SignedEvent, HashedEvent, StampedEvent, WRAP, SEAL} from "../util/index.js"
 import {own, hash, decrypt, ISigner} from "./util.js"
 import {Nip01Signer} from "./signers/nip01.js"
 

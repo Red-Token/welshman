@@ -26,10 +26,10 @@ export * from "./util.js"
 export * from "./wot.js"
 export * from "./zappers.js"
 
-import type {NetContext} from "@welshman/net"
+import type {NetContext} from "../net/index.js"
 import type {AppContext} from "./context.js"
 
-declare module "@welshman/lib" {
+declare module "../lib/index.js" {
   interface Context {
     net: NetContext
     app: AppContext

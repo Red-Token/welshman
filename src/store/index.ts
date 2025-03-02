@@ -9,11 +9,11 @@ import {
   batch,
   partition,
   first,
-} from "@welshman/lib"
-import type {Maybe} from "@welshman/lib"
-import type {Repository} from "@welshman/util"
-import {matchFilters, getIdAndAddress, getIdFilters} from "@welshman/util"
-import type {Filter, TrustedEvent} from "@welshman/util"
+} from "../lib/index.js"
+import type {Maybe} from "../lib/index.js"
+import type {Repository} from "../util/index.js"
+import {matchFilters, getIdAndAddress, getIdFilters} from "../util/index.js"
+import type {Filter, TrustedEvent} from "../util/index.js"
 
 // Sync with localstorage
 

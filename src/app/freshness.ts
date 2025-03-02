@@ -1,6 +1,6 @@
 import {writable} from "svelte/store"
-import {assoc, batch} from "@welshman/lib"
-import {withGetter} from "@welshman/store"
+import {assoc, batch} from "../lib/index.js"
+import {withGetter} from "../store/index.js"
 
 export type FreshnessUpdate = {
   ns: string

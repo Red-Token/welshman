@@ -1,7 +1,7 @@
-import {ctx, Emitter, now, randomId, defer} from "@welshman/lib"
-import type {Deferred} from "@welshman/lib"
-import {asSignedEvent} from "@welshman/util"
-import type {SignedEvent} from "@welshman/util"
+import {ctx, Emitter, now, randomId, defer} from "../lib/index.js"
+import type {Deferred} from "../lib/index.js"
+import {asSignedEvent} from "../util/index.js"
+import type {SignedEvent} from "../util/index.js"
 
 export enum PublishStatus {
   Pending = "pending",

@@ -1,12 +1,12 @@
-import {ctx, randomInt, uniq, noop, always} from "@welshman/lib"
+import {ctx, randomInt, uniq, noop, always} from "../lib/index.js"
 import {
   LOCAL_RELAY_URL,
   matchFilters,
   unionFilters,
   isSignedEvent,
   hasValidSignature,
-} from "@welshman/util"
-import type {StampedEvent, SignedEvent, Filter, TrustedEvent} from "@welshman/util"
+} from "../util/index.js"
+import type {StampedEvent, SignedEvent, Filter, TrustedEvent} from "../util/index.js"
 import {Pool} from "./Pool.js"
 import {Executor} from "./Executor.js"
 import {AuthMode} from "./ConnectionAuth.js"

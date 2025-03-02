@@ -17,7 +17,7 @@ import {
   HOUR,
   DAY,
   WEEK,
-} from "@welshman/lib"
+} from "../lib/index.js"
 import {
   getFilterId,
   isRelayUrl,
@@ -35,9 +35,9 @@ import {
   getCommentTags,
   getPubkeyTagValues,
   normalizeRelayUrl,
-} from "@welshman/util"
-import type {TrustedEvent, Filter} from "@welshman/util"
-import type {RelaysAndFilters} from "@welshman/net"
+} from "../util/index.js"
+import type {TrustedEvent, Filter} from "../util/index.js"
+import type {RelaysAndFilters} from "../net/index.js"
 import {pubkey} from "./session.js"
 import {
   relaySelectionsByPubkey,

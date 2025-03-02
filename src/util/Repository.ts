@@ -1,4 +1,4 @@
-import {flatten, pluck, Emitter, sortBy, inc, chunk, uniq, omit, now, range} from "@welshman/lib"
+import {flatten, pluck, Emitter, sortBy, inc, chunk, uniq, omit, now, range} from "../lib/index.js"
 import {DELETE} from "./Kinds.js"
 import {EPOCH, matchFilter} from "./Filters.js"
 import {isReplaceable, isUnwrappedEvent} from "./Events.js"

@@ -1,4 +1,4 @@
-import {parseJson, nthEq} from "@welshman/lib"
+import {parseJson, nthEq} from "../lib/index.js"
 import {Address} from "./Address.js"
 import {uniqTags} from "./Tags.js"
 import {isRelayUrl} from "./Relay.js"

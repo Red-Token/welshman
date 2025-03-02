@@ -1,6 +1,6 @@
 import {NostrSignerPlugin, AppInfo} from "nostr-signer-capacitor-plugin"
 import {decode} from "nostr-tools/nip19"
-import {SignedEvent, StampedEvent} from "@welshman/util"
+import {SignedEvent, StampedEvent} from "../../util/index.js"
 import {hash, own, ISigner} from "../util.js"
 
 export const getNip55 = async (): Promise<AppInfo[]> => {

@@ -1,5 +1,5 @@
-import {ctx, assoc, lt, groupBy, now, pushToMapKey, inc, flatten, chunk} from "@welshman/lib"
-import type {SignedEvent, TrustedEvent, Filter} from "@welshman/util"
+import {ctx, assoc, lt, groupBy, now, pushToMapKey, inc, flatten, chunk} from "../lib/index.js"
+import type {SignedEvent, TrustedEvent, Filter} from "../util/index.js"
 import {subscribe} from "./Subscribe.js"
 import {publish} from "./Publish.js"
 

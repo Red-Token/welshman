@@ -1,6 +1,6 @@
 import {writable, derived} from "svelte/store"
-import {type Zapper} from "@welshman/util"
-import {type SubscribeRequestWithHandlers} from "@welshman/net"
+import {type Zapper} from "../util/index.js"
+import {type SubscribeRequestWithHandlers} from "../net/index.js"
 import {
   ctx,
   identity,
@@ -11,7 +11,7 @@ import {
   tryCatch,
   batcher,
   postJson,
-} from "@welshman/lib"
+} from "../lib/index.js"
 import {collection} from "./collection.js"
 import {deriveProfile} from "./profiles.js"
 

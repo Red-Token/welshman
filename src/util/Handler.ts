@@ -1,4 +1,4 @@
-import {fromPairs, last, first, parseJson} from "@welshman/lib"
+import {fromPairs, last, first, parseJson} from "../lib/index.js"
 import {getAddress} from "./Address.js"
 import {getAddressTags, getKindTagValues} from "./Tags.js"
 import type {TrustedEvent} from "./Events.js"

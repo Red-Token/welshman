@@ -1,5 +1,5 @@
 import {npubEncode} from "nostr-tools/nip19"
-import {ellipsize, parseJson} from "@welshman/lib"
+import {ellipsize, parseJson} from "../lib/index.js"
 import {TrustedEvent} from "./Events.js"
 import {getLnUrl} from "./Zaps.js"
 import {PROFILE} from "./Kinds.js"

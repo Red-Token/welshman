@@ -6,6 +6,6 @@ export * from "./Tools.js"
 export * from "./Worker.js"
 export {default as normalizeUrl} from "./normalize-url/index.js"
 
-declare module "@welshman/lib" {
+declare module "../lib/index.js" {
   export interface Context {}
 }

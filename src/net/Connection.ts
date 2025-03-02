@@ -1,5 +1,5 @@
-import {Emitter} from "@welshman/lib"
-import {normalizeRelayUrl} from "@welshman/util"
+import {Emitter} from "../lib/index.js"
+import {normalizeRelayUrl} from "../util/index.js"
 import {Socket} from "./Socket.js"
 import type {Message} from "./Socket.js"
 import {ConnectionEvent} from "./ConnectionEvent.js"

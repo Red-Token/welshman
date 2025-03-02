@@ -1,8 +1,8 @@
-import {ctx, isNil} from "@welshman/lib"
-import {LOCAL_RELAY_URL, getFilterResultCardinality} from "@welshman/util"
-import type {TrustedEvent, Filter} from "@welshman/util"
-import {subscribe as baseSubscribe, SubscriptionEvent} from "@welshman/net"
-import type {SubscribeRequestWithHandlers} from "@welshman/net"
+import {ctx, isNil} from "../lib/index.js"
+import {LOCAL_RELAY_URL, getFilterResultCardinality} from "../util/index.js"
+import type {TrustedEvent, Filter} from "../util/index.js"
+import {subscribe as baseSubscribe, SubscriptionEvent} from "../net/index.js"
+import type {SubscribeRequestWithHandlers} from "../net/index.js"
 import {repository} from "./core.js"
 
 export type PartialSubscribeRequest = Partial<SubscribeRequestWithHandlers> & {filters: Filter[]}

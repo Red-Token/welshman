@@ -20,7 +20,7 @@ export * from "./target/Local.js"
 
 import type {NetContext} from "./Context.js"
 
-declare module "@welshman/lib" {
+declare module "../lib/index.js" {
   interface Context {
     net: NetContext
   }

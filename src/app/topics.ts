@@ -1,5 +1,5 @@
-import {inc, throttle} from "@welshman/lib"
-import {custom} from "@welshman/store"
+import {inc, throttle} from "../lib/index.js"
+import {custom} from "../store/index.js"
 import {repository} from "./core.js"
 
 export type Topic = {

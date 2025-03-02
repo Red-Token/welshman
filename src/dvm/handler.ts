@@ -1,8 +1,8 @@
 import {hexToBytes} from "@noble/hashes/utils"
 import {getPublicKey, finalizeEvent} from "nostr-tools/pure"
-import {now} from "@welshman/lib"
-import type {TrustedEvent, StampedEvent, Filter} from "@welshman/util"
-import {subscribe, publish} from "@welshman/net"
+import {now} from "../lib/index.js"
+import type {TrustedEvent, StampedEvent, Filter} from "../util/index.js"
+import {subscribe, publish} from "../net/index.js"
 
 export type DVMHandler = {
   stop?: () => void

@@ -1,5 +1,5 @@
-import type {Filter} from "@welshman/util"
-import {isSignedEvent} from "@welshman/util"
+import type {Filter} from "../util/index.js"
+import {isSignedEvent} from "../util/index.js"
 import {
   push as basePush,
   pull as basePull,
@@ -7,7 +7,7 @@ import {
   pushWithoutNegentropy,
   pullWithoutNegentropy,
   syncWithoutNegentropy,
-} from "@welshman/net"
+} from "../net/index.js"
 import {repository} from "./core.js"
 import {relaysByUrl} from "./relays.js"
 

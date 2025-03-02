@@ -1,5 +1,5 @@
-import {ctx, sleep} from "@welshman/lib"
-import {CLIENT_AUTH, createEvent} from "@welshman/util"
+import {ctx, sleep} from "../lib/index.js"
+import {CLIENT_AUTH, createEvent} from "../util/index.js"
 import {ConnectionEvent} from "./ConnectionEvent.js"
 import type {Connection} from "./Connection.js"
 import type {Message} from "./Socket.js"

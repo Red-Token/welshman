@@ -1,8 +1,8 @@
-import {throttle} from "@welshman/lib"
-import {Repository, Relay} from "@welshman/util"
-import type {TrustedEvent} from "@welshman/util"
-import {Tracker} from "@welshman/net"
-import {custom} from "@welshman/store"
+import {throttle} from "../lib/index.js"
+import {Repository, Relay} from "../util/index.js"
+import type {TrustedEvent} from "../util/index.js"
+import {Tracker} from "../net/index.js"
+import {custom} from "../store/index.js"
 
 export const repository = new Repository<TrustedEvent>()
 

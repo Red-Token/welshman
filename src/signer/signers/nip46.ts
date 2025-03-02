@@ -7,15 +7,15 @@ import {
   tryCatch,
   randomId,
   equals,
-} from "@welshman/lib"
+} from "../../lib/index.js"
 import {
   createEvent,
   normalizeRelayUrl,
   TrustedEvent,
   StampedEvent,
   NOSTR_CONNECT,
-} from "@welshman/util"
-import {subscribe, publish, Subscription, SubscriptionEvent} from "@welshman/net"
+} from "../../util/index.js"
+import {subscribe, publish, Subscription, SubscriptionEvent} from "../../net/index.js"
 import {ISigner, EncryptionImplementation, decrypt, hash, own} from "../util.js"
 import {Nip01Signer} from "./nip01.js"
 

@@ -1,6 +1,12 @@
-import {uniq, identity, flatten, pushToMapKey, intersection, tryCatch, now} from "@welshman/lib"
-import type {TrustedEvent, Filter} from "@welshman/util"
-import {intersectFilters, matchFilter, getAddress, getIdFilters, unionFilters} from "@welshman/util"
+import {uniq, identity, flatten, pushToMapKey, intersection, tryCatch, now} from "../lib/index.js"
+import type {TrustedEvent, Filter} from "../util/index.js"
+import {
+  intersectFilters,
+  matchFilter,
+  getAddress,
+  getIdFilters,
+  unionFilters,
+} from "../util/index.js"
 import type {
   CreatedAtItem,
   RequestItem,

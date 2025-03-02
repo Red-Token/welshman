@@ -1,4 +1,4 @@
-import {Emitter} from "@welshman/lib"
+import {Emitter} from "../../lib/index.js"
 import type {Message} from "../Socket.js"
 
 export class Echo extends Emitter {

@@ -1,4 +1,4 @@
-import {Emitter, addToMapKey} from "@welshman/lib"
+import {Emitter, addToMapKey} from "../lib/index.js"
 
 export class Tracker extends Emitter {
   relaysById = new Map<string, Set<string>>()

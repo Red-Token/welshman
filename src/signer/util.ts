@@ -3,8 +3,8 @@ import {bytesToHex, hexToBytes} from "@noble/hashes/utils"
 import * as nt04 from "nostr-tools/nip04"
 import * as nt44 from "nostr-tools/nip44"
 import {generateSecretKey, getPublicKey, getEventHash} from "nostr-tools/pure"
-import {cached, now} from "@welshman/lib"
-import {SignedEvent, HashedEvent, EventTemplate, StampedEvent, OwnedEvent} from "@welshman/util"
+import {cached, now} from "../lib/index.js"
+import {SignedEvent, HashedEvent, EventTemplate, StampedEvent, OwnedEvent} from "../util/index.js"
 
 export const makeSecret = () => bytesToHex(generateSecretKey())
 

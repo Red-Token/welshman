@@ -1,5 +1,5 @@
 import WebSocket from "isomorphic-ws"
-import {Worker, sleep} from "@welshman/lib"
+import {Worker, sleep} from "../lib/index.js"
 import {ConnectionEvent} from "./ConnectionEvent.js"
 import type {Connection} from "./Connection.js"
 

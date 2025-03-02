@@ -1,11 +1,11 @@
-import {partition} from "@welshman/lib"
+import {partition} from "../lib/index.js"
 import {
   defaultOptimizeSubscriptions,
   getDefaultNetContext as originalGetDefaultNetContext,
-} from "@welshman/net"
-import type {Subscription, RelaysAndFilters, NetContext} from "@welshman/net"
-import {LOCAL_RELAY_URL, isEphemeralKind, isDVMKind, unionFilters} from "@welshman/util"
-import type {TrustedEvent, StampedEvent} from "@welshman/util"
+} from "../net/index.js"
+import type {Subscription, RelaysAndFilters, NetContext} from "../net/index.js"
+import {LOCAL_RELAY_URL, isEphemeralKind, isDVMKind, unionFilters} from "../util/index.js"
+import type {TrustedEvent, StampedEvent} from "../util/index.js"
 import {tracker, repository} from "./core.js"
 import {makeRouter, getFilterSelections} from "./router.js"
 import {signer} from "./session.js"

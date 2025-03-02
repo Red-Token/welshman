@@ -1,4 +1,4 @@
-import {hexToBech32, fromPairs} from "@welshman/lib"
+import {hexToBech32, fromPairs} from "../lib/index.js"
 import type {TrustedEvent} from "./Events.js"
 
 const DIVISORS = {

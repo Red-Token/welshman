@@ -10,7 +10,7 @@ import {
   groupBy,
   randomId,
   uniq,
-} from "@welshman/lib"
+} from "../lib/index.js"
 import type {HashedEvent, TrustedEvent, SignedEvent} from "./Events.js"
 import {isReplaceableKind} from "./Kinds.js"
 import {Address, getAddress} from "./Address.js"

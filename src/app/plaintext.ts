@@ -1,8 +1,8 @@
 import {writable} from "svelte/store"
-import {assoc} from "@welshman/lib"
-import type {TrustedEvent} from "@welshman/util"
-import {withGetter} from "@welshman/store"
-import {decrypt} from "@welshman/signer"
+import {assoc} from "../lib/index.js"
+import type {TrustedEvent} from "../util/index.js"
+import {withGetter} from "../store/index.js"
+import {decrypt} from "../signer/index.js"
 import {getSigner, getSession} from "./session.js"
 
 export const plaintext = withGetter(writable<Record<string, string>>({}))

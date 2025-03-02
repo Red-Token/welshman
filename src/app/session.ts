@@ -1,7 +1,7 @@
 import {derived} from "svelte/store"
-import {cached, hash, omit, equals, assoc} from "@welshman/lib"
-import {withGetter, synced} from "@welshman/store"
-import {Nip46Broker, Nip46Signer, Nip07Signer, Nip01Signer, Nip55Signer} from "@welshman/signer"
+import {cached, hash, omit, equals, assoc} from "../lib/index.js"
+import {withGetter, synced} from "../store/index.js"
+import {Nip46Broker, Nip46Signer, Nip07Signer, Nip01Signer, Nip55Signer} from "../signer/index.js"
 
 export type SessionNip01 = {
   method: "nip01"

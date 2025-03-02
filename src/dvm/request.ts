@@ -1,7 +1,7 @@
-import {Emitter, now} from "@welshman/lib"
-import type {TrustedEvent, SignedEvent, Filter} from "@welshman/util"
-import {subscribe, publish, SubscriptionEvent} from "@welshman/net"
-import type {Subscription, Publish} from "@welshman/net"
+import {Emitter, now} from "../lib/index.js"
+import type {TrustedEvent, SignedEvent, Filter} from "../util/index.js"
+import {subscribe, publish, SubscriptionEvent} from "../net/index.js"
+import type {Subscription, Publish} from "../net/index.js"
 
 export enum DVMEvent {
   Progress = "progress",

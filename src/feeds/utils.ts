@@ -1,6 +1,6 @@
-import {ensureNumber} from "@welshman/lib"
-import type {Filter} from "@welshman/util"
-import {getTagValues} from "@welshman/util"
+import {ensureNumber} from "../lib/index.js"
+import type {Filter} from "../util/index.js"
+import {getTagValues} from "../util/index.js"
 import {
   FeedType,
   Feed,

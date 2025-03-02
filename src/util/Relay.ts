@@ -1,4 +1,4 @@
-import {last, Emitter, normalizeUrl, sleep, stripProtocol} from "@welshman/lib"
+import {last, Emitter, normalizeUrl, sleep, stripProtocol} from "../lib/index.js"
 import {matchFilters} from "./Filters.js"
 import type {Repository} from "./Repository.js"
 import type {Filter} from "./Filters.js"

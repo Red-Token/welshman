@@ -1,4 +1,4 @@
-import {Emitter} from "@welshman/lib"
+import {Emitter} from "../lib/index.js"
 import {Connection} from "./Connection.js"
 
 export class Pool extends Emitter {

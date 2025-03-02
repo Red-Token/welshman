@@ -1,4 +1,4 @@
-import type {Context} from "@welshman/lib"
+import type {Context} from "../lib/index.js"
 
 /**
  * A global context variable for configuring libraries and applications.
@@ -8,7 +8,7 @@ import type {Context} from "@welshman/lib"
  *   x: number
  * }
  *
- * declare module "@welshman/lib" {
+ * declare module "../lib/index.js" {
  *   interface Context {
  *     net: MyContext
  *   }

@@ -4,7 +4,7 @@ import {
   isReplaceableKind as isPlainReplaceableKind,
   isParameterizedReplaceableKind,
 } from "nostr-tools/kinds"
-import {between} from "@welshman/lib"
+import {between} from "../lib/index.js"
 
 export {isRegularKind, isEphemeralKind, isPlainReplaceableKind, isParameterizedReplaceableKind}
 

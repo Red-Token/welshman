@@ -1,5 +1,5 @@
 {
-  "name": "@redtoken/welshman",
+  "name": "@welshman/welshman",
   "version": "0.2.0",
   "license": "MIT",
   "description": "A collection of svelte stores for use in building nostr client applications.",
