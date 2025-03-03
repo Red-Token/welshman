@@ -2,8 +2,8 @@
   "name": "Welshman Docs",
   "out": "./docs/reference",
   "docsRoot": "./docs",
-  "entryPoints": ["packages/*"],
-  "entryPointStrategy": "packages",
+  "entryPoints": ["src/*"],
+  "entryPointStrategy": "src",
   "exclude": ["**/normalize-url/*"],
   "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
   "hideGenerator": true
