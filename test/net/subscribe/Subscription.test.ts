@@ -1,8 +1,8 @@
-import {ctx} from "@welshman/lib"
-import type {TrustedEvent} from "@welshman/util"
+import {ctx} from "@red-token/welshman/lib"
+import type {TrustedEvent} from "@red-token/welshman/util"
 import {vi, describe, it, expect, beforeEach} from "vitest"
-import {Subscription, SubscriptionEvent} from "../../src/Subscribe.js"
-import {ConnectionEvent} from "../../src/ConnectionEvent.js"
+import {Subscription, SubscriptionEvent} from "@net/Subscribe.js"
+import {ConnectionEvent} from "@net/ConnectionEvent.js"
 
 describe("Subscription", () => {
   let mockExecutor: any

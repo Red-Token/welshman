@@ -1,9 +1,9 @@
-import {defaultTagFeedMappings} from "@welshman/feeds"
-import {now} from "@welshman/lib"
-import {getAddress, type TrustedEvent} from "@welshman/util"
+import {defaultTagFeedMappings} from "@red-token/welshman/feeds"
+import {now} from "@red-token/welshman/lib"
+import {getAddress, type TrustedEvent} from "@red-token/welshman/util"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {FeedCompiler} from "../src/compiler.js"
-import {Feed, FeedType, Scope} from "../src/core.js"
+import {FeedCompiler} from "@feeds/compiler.js"
+import {Feed, FeedType, Scope} from "@feeds/core.js"
 
 describe("FeedCompiler", () => {
   let compiler: FeedCompiler

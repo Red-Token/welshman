@@ -1,10 +1,10 @@
-import {ctx} from "@welshman/lib"
-import {AuthMode} from "@welshman/net"
-import {SignedEvent} from "@welshman/util"
+import {ctx} from "@red-token/welshman/lib"
+import {AuthMode} from "@red-token/welshman/net"
+import {SignedEvent} from "@red-token/welshman/util"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {Connection} from "../src/Connection.js"
-import {ConnectionEvent} from "../src/ConnectionEvent.js"
-import {ConnectionStats} from "../src/ConnectionStats.js"
+import {Connection} from "@net/Connection.js"
+import {ConnectionEvent} from "@net/ConnectionEvent.js"
+import {ConnectionStats} from "@net/ConnectionStats.js"
 
 describe("ConnectionStats", () => {
   let connection: Connection

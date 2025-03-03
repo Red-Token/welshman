@@ -1,10 +1,10 @@
 import {describe, it, expect, beforeEach, vi, afterEach} from "vitest"
 import {get, writable} from "svelte/store"
-import {collection} from "../src/collection"
-import * as freshness from "../src/freshness"
+import {collection} from "@app/collection.js"
+import * as freshness from "@app/freshness.js"
 
 // Mock the freshness module
-vi.mock("../src/freshness", () => ({
+vi.mock("@app/freshness", () => ({
   getFreshness: vi.fn(),
   setFreshnessThrottled: vi.fn(),
 }))

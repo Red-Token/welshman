@@ -1,11 +1,11 @@
-import {ctx} from "@welshman/lib"
-import type {Filter, SignedEvent, TrustedEvent} from "@welshman/util"
+import {ctx} from "@red-token/welshman/lib"
+import type {Filter, SignedEvent, TrustedEvent} from "@red-token/welshman/util"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {Executor} from "../src/Executor.js"
-import {Negentropy} from "../src/Negentropy.js"
+import {Executor} from "@net/Executor.js"
+import {Negentropy} from "@net/Negentropy.js"
 
 // Mock Negentropy
-vi.mock("../src/Negentropy.js", () => ({
+vi.mock("@net/Negentropy.js", () => ({
   Negentropy: vi.fn().mockImplementation(() => ({
     reconcile: vi.fn().mockResolvedValue(["newMsg", ["id1"], ["id2"]]),
     initiate: vi.fn().mockResolvedValue("initialMsg"),

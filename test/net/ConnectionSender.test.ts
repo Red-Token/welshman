@@ -1,8 +1,8 @@
-import {ConnectionSender} from "../src/ConnectionSender.js"
-import {Connection} from "../src/Connection.js"
-import {Message, SocketStatus} from "../src/Socket.js"
-import {AuthStatus} from "../src/ConnectionAuth.js"
-import {AUTH_JOIN} from "@welshman/util"
+import {ConnectionSender} from "@net/ConnectionSender.js"
+import {Connection} from "@net/Connection.js"
+import {Message, SocketStatus} from "@net/Socket.js"
+import {AuthStatus} from "@net/ConnectionAuth.js"
+import {AUTH_JOIN} from "@red-token/welshman/util"
 import {vi, describe, it, expect, beforeEach, afterEach} from "vitest"
 
 describe("ConnectionSender", () => {

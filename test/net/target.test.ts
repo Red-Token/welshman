@@ -1,6 +1,6 @@
-import {LOCAL_RELAY_URL} from "@welshman/util"
+import {LOCAL_RELAY_URL} from "@red-token/welshman/util"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {ConnectionEvent, Echo, Local, Multi, Relay, Relays} from "../src/index.js"
+import {ConnectionEvent, Echo, Local, Multi, Relay, Relays} from "@net/index.js"
 
 describe("Target implementations", () => {
   describe("Echo", () => {

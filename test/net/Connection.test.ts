@@ -1,5 +1,5 @@
-import {Connection, ConnectionStatus} from "../src/Connection.js"
-import {ConnectionEvent} from "../src/ConnectionEvent.js"
+import {Connection, ConnectionStatus} from "@net/Connection.js"
+import {ConnectionEvent} from "@net/ConnectionEvent.js"
 import {vi, describe, it, expect, beforeEach, afterEach} from "vitest"
 
 describe("Connection", () => {

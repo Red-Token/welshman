@@ -1,5 +1,5 @@
 import {describe, it, expect} from "vitest"
-import {truncate, ParsedType, Parsed} from "../src"
+import {truncate, ParsedType, Parsed} from "@content/index.js"
 
 describe("Content Truncation", () => {
   it("should not truncate content shorter than minLength", () => {

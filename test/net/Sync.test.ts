@@ -1,16 +1,16 @@
-import {diff, pull, push, sync, pullWithoutNegentropy, pushWithoutNegentropy} from "../src/Sync.js"
-import {ctx, now} from "@welshman/lib"
-import type {SignedEvent, TrustedEvent, Filter} from "@welshman/util"
+import {diff, pull, push, sync, pullWithoutNegentropy, pushWithoutNegentropy} from "@net/Sync.js"
+import {ctx, now} from "@red-token/welshman/lib"
+import type {SignedEvent, TrustedEvent, Filter} from "@red-token/welshman/util"
 import {vi, describe, it, expect, beforeEach} from "vitest"
-import {subscribe} from "../src/Subscribe.js"
-import {publish} from "../src/Publish.js"
+import {subscribe} from "@net/Subscribe.js"
+import {publish} from "@net/Publish.js"
 
 // Mock dependencies
-vi.mock("../src/Subscribe", () => ({
+vi.mock("@net/Subscribe", () => ({
   subscribe: vi.fn(),
 }))
 
-vi.mock("../src/Publish", () => ({
+vi.mock("@net/Publish", () => ({
   publish: vi.fn(),
 }))
 

@@ -11,7 +11,7 @@ import {
   synced,
   throttled,
   withGetter,
-} from "../src/index.js"
+} from "@store/index.js"
 
 // Mock localStorage
 const localStorageMock = (() => {
