@@ -1,4 +1,4 @@
-import {now} from "@red-token/welshman/lib"
+import {now} from "@lib/index.js"
 import {describe, it, expect, beforeEach, vi, afterEach} from "vitest"
 import {
   Relay,

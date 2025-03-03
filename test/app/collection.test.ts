@@ -160,7 +160,7 @@ describe("collection", () => {
         getKey: item => item.id,
       })
 
-      const derived = col.deriveItem(null)
+      const derived = col.deriveItem(undefined)
       expect(get(derived)).toBeUndefined()
     })
 

@@ -1,5 +1,5 @@
-import type {Filter, TrustedEvent} from "@red-token/welshman/util"
-import {hasValidSignature, isSignedEvent, LOCAL_RELAY_URL, matchFilters} from "@red-token/welshman/util"
+import type {Filter, TrustedEvent} from "@util/index.js"
+import {hasValidSignature, isSignedEvent, LOCAL_RELAY_URL, matchFilters} from "@util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {AuthMode} from "@net/ConnectionAuth.js"
 import {
@@ -10,7 +10,7 @@ import {
 } from "@net/Context.js"
 
 // Mock utilities that are imported
-vi.mock(import("@red-token/welshman/util"), async importOriginal => ({
+vi.mock(import("@util/index.js"), async importOriginal => ({
   ...(await importOriginal()),
   isSignedEvent: vi.fn(),
   hasValidSignature: vi.fn(),
