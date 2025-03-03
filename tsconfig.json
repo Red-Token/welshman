@@ -2,6 +2,15 @@
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@util/*": ["src/util/*"],
+      "@store/*": ["src/store/*"],
+      "@net/*": ["src/net/*"],
+      "@lib/*": ["src/lib/*"],
+      "@feeds/*": ["src/feeds/*"],
+      "@content/*": ["src/content/*"],
+    },
     "outDir": "build",
     "module": "nodenext",
     "moduleResolution": "nodenext",
