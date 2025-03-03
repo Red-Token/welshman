@@ -1,4 +1,4 @@
-import {now} from "@red-token/welshman/lib"
+import {now} from "@lib/index.js"
 import {describe, it, expect} from "vitest"
 import {verifiedSymbol} from "nostr-tools/pure"
 import * as Events from "@util/Events.js"

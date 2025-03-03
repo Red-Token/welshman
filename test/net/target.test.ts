@@ -1,4 +1,4 @@
-import {LOCAL_RELAY_URL} from "@red-token/welshman/util"
+import {LOCAL_RELAY_URL} from "@util/index.js"
 import {beforeEach, describe, expect, it, vi} from "vitest"
 import {ConnectionEvent, Echo, Local, Multi, Relay, Relays} from "@net/index.js"
 

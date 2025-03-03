@@ -1,6 +1,6 @@
 import {diff, pull, push, sync, pullWithoutNegentropy, pushWithoutNegentropy} from "@net/Sync.js"
-import {ctx, now} from "@red-token/welshman/lib"
-import type {SignedEvent, TrustedEvent, Filter} from "@red-token/welshman/util"
+import {ctx, now} from "@lib/index.js"
+import type {SignedEvent, TrustedEvent, Filter} from "@util/index.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 import {subscribe} from "@net/Subscribe.js"
 import {publish} from "@net/Publish.js"

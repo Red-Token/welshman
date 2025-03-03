@@ -1,5 +1,5 @@
-import {now} from "@red-token/welshman/lib"
-import {getAddress} from "@red-token/welshman/util"
+import {now} from "@lib/index.js"
+import {getAddress} from "@util/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
 import {Repository} from "@util/Repository.js"
 import type {TrustedEvent} from "@util/Events.js"

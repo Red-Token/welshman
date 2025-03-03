@@ -21,17 +21,20 @@ describe("Renderer", () => {
 
     it("should render links", () => {
       renderer.addLink("https://njump.me", "Example")
+      // eslint-disable-next-line quotes
       expect(renderer.toString()).toBe('<a href="https://njump.me/" target="_blank">Example</a>')
     })
 
     it("should render entities", () => {
       renderer.addEntityLink("1234567890abcdef")
       expect(renderer.toString()).toBe(
+        // eslint-disable-next-line quotes
         '<a href="https://njump.me/1234567890abcdef" target="_blank">1234567890abcdef…</a>',
       )
     })
 
     it("should escape HTML in text content", () => {
+      // eslint-disable-next-line quotes
       renderer.addText('<script>alert("xss")</script>')
       expect(renderer.toString()).not.toContain("<script>")
     })
@@ -62,6 +65,7 @@ describe("Renderer", () => {
     })
 
     it("should escape HTML in text content", () => {
+      // eslint-disable-next-line quotes
       renderer.addText('<script>alert("xss")</script>')
       expect(renderer.toString()).not.toContain("<script>")
     })

@@ -1,5 +1,5 @@
-import {now} from "@red-token/welshman/lib"
-import {HANDLER_INFORMATION} from "@red-token/welshman/util"
+import {now} from "@lib/index.js"
+import {HANDLER_INFORMATION} from "@util/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
 import {readHandlers, getHandlerKey, displayHandler, getHandlerAddress} from "@util/Handler.js"
 import type {TrustedEvent} from "@util/Events.js"

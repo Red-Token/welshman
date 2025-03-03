@@ -1,4 +1,4 @@
-import {sleep} from "@red-token/welshman/lib"
+import {sleep} from "@lib/index.js"
 import WebSocket from "isomorphic-ws"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {ConnectionEvent} from "@net/ConnectionEvent.js"

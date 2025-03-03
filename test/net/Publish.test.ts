@@ -1,5 +1,5 @@
-import {ctx} from "@red-token/welshman/lib"
-import type {SignedEvent} from "@red-token/welshman/util"
+import {ctx} from "@lib/index.js"
+import type {SignedEvent} from "@util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {makePublish, publish, PublishStatus} from "@net/Publish.js"
 

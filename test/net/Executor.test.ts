@@ -1,5 +1,5 @@
-import {ctx} from "@red-token/welshman/lib"
-import type {Filter, SignedEvent, TrustedEvent} from "@red-token/welshman/util"
+import {ctx} from "@lib/index.js"
+import type {Filter, SignedEvent, TrustedEvent} from "@util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {Executor} from "@net/Executor.js"
 import {Negentropy} from "@net/Negentropy.js"

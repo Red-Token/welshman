@@ -2,7 +2,7 @@ import {ConnectionSender} from "@net/ConnectionSender.js"
 import {Connection} from "@net/Connection.js"
 import {Message, SocketStatus} from "@net/Socket.js"
 import {AuthStatus} from "@net/ConnectionAuth.js"
-import {AUTH_JOIN} from "@red-token/welshman/util"
+import {AUTH_JOIN} from "@util/index.js"
 import {vi, describe, it, expect, beforeEach, afterEach} from "vitest"
 
 describe("ConnectionSender", () => {

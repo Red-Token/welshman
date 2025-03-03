@@ -1,5 +1,5 @@
-import {MUTES} from "@red-token/welshman/util"
-import {now} from "@red-token/welshman/lib"
+import {MUTES} from "@util/index.js"
+import {now} from "@lib/index.js"
 import {describe, it, expect, vi, beforeEach} from "vitest"
 import {Encryptable, asDecryptedEvent} from "@util/Encryptable.js"
 import type {OwnedEvent, TrustedEvent} from "@util/Events.js"

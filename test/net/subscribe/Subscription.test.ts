@@ -1,5 +1,5 @@
-import {ctx} from "@red-token/welshman/lib"
-import type {TrustedEvent} from "@red-token/welshman/util"
+import {ctx} from "@lib/index.js"
+import type {TrustedEvent} from "@util/index.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 import {Subscription, SubscriptionEvent} from "@net/Subscribe.js"
 import {ConnectionEvent} from "@net/ConnectionEvent.js"
@@ -9,7 +9,7 @@ describe("Subscription", () => {
   let mockConnection: any
   let mockExecutorSub: any
 
-  const relayUrl = "wss://test.relay/"
+  const relayUrl = "wss://relay.lxc/"
 
   beforeEach(() => {
     vi.useFakeTimers()

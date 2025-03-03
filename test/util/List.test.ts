@@ -1,5 +1,5 @@
-import {now} from "@welshman/lib"
-import {MUTES} from "@welshman/util"
+import {now} from "@lib/index.js"
+import {MUTES} from "@util/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
 import {
   makeList,
@@ -9,9 +9,9 @@ import {
   removeFromListByPredicate,
   addToListPublicly,
   addToListPrivately,
-} from "../src/List"
-import type {DecryptedEvent} from "../src/Encryptable"
-import type {List} from "../src/List"
+} from "@util/List.js"
+import type {DecryptedEvent} from "@util/Encryptable.js"
+import type {List} from "@util/List.js"
 
 describe("List", () => {
   beforeEach(() => {

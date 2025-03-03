@@ -2,7 +2,7 @@ import {ConnectionState} from "@net/ConnectionState.js"
 import {Connection} from "@net/Connection.js"
 import {SocketStatus} from "@net/Socket.js"
 import {ConnectionEvent} from "@net/ConnectionEvent.js"
-import {AUTH_JOIN, SignedEvent} from "@red-token/welshman/util"
+import {AUTH_JOIN, SignedEvent} from "@util/index.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 
 describe("ConnectionState", () => {

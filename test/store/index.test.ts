@@ -1,4 +1,4 @@
-import type {Repository, TrustedEvent} from "@red-token/welshman/util"
+import type {Repository, TrustedEvent} from "@util/index.js"
 import {get} from "svelte/store"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {
