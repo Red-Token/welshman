@@ -64,7 +64,7 @@
     "docs:preview": "vitepress preview docs",
     "pub": "npm run lint && npm run build && npm publish",
     "build": "gts clean && tsc",
-    "buildtest": "gts clean && tsc --noImplicitAny false",
+    "buildtest": "gts clean && tsc --noImplicitAny false --noEmitOnError false",
     "lint": "gts lint",
     "format": "prettier --write .",
     "fix": "gts fix"

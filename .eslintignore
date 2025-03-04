@@ -1,6 +1,6 @@
 build
 normalize-url
-__tests__
+test
 Negentropy.ts
 docs
 vitest.config.ts
