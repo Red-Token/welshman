@@ -10,6 +10,8 @@
       "@lib/*": ["src/lib/*"],
       "@feeds/*": ["src/feeds/*"],
       "@content/*": ["src/content/*"],
+      "@signer/*": ["src/signer/*"],
+      "@dvm/*": ["src/dvm/*"],
     },
     "outDir": "build",
     "module": "nodenext",

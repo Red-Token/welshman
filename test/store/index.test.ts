@@ -1,4 +1,4 @@
-import type {Repository, TrustedEvent} from "@util/index.js"
+import type {Repository, TrustedEvent} from "@welshman/util"
 import {get} from "svelte/store"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {
@@ -11,7 +11,7 @@ import {
   synced,
   throttled,
   withGetter,
-} from "@store/index.js"
+} from "../src/index"
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -219,7 +219,7 @@ describe("Store utilities", () => {
         const [[_, callback]] = mockRepository.on.mock.calls
 
         callback({
-          added: new Set(),
+          added: [{id: "2"} as TrustedEvent],
           removed: new Set([mockEvent.id]),
         })
 

@@ -1,5 +1,6 @@
 import {resolve} from "path"
 import {defineConfig} from "vitest/config"
+import "fake-indexeddb/auto"
 
 export default defineConfig({
   test: {
