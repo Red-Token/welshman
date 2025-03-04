@@ -1,11 +1,11 @@
-import {now} from "@lib/index.js"
-import {subscribe, publish, SubscriptionEvent} from "@net/index.js"
-import type {SignedEvent, TrustedEvent} from "@util/index.js"
+import {now} from "../../src/lib"
+import {subscribe, publish, SubscriptionEvent} from "../../src/net"
+import type {SignedEvent, TrustedEvent} from "../../src/util"
 import {vi, describe, it, expect, beforeEach} from "vitest"
-import {makeDvmRequest, DVMEvent} from "@dvm/request.js"
+import {makeDvmRequest, DVMEvent} from "../../src/dvm/request"
 
 // Mock dependencies
-vi.mock(import("@lib/index.js"), async importOriginal => ({
+vi.mock(import("../../src/lib"), async importOriginal => ({
   ...(await importOriginal()),
   Emitter: vi.fn().mockImplementation(() => ({
     emit: vi.fn(),
@@ -13,7 +13,7 @@ vi.mock(import("@lib/index.js"), async importOriginal => ({
   })),
 }))
 
-vi.mock("@net", () => ({
+vi.mock("../../src/net", () => ({
   subscribe: vi.fn(),
   publish: vi.fn(),
   SubscriptionEvent: {

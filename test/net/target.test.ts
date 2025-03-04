@@ -1,6 +1,6 @@
-import {LOCAL_RELAY_URL} from "@util/index.js"
+import {LOCAL_RELAY_URL} from "../../src/util/index.js"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {ConnectionEvent, Echo, Local, Multi, Relay, Relays} from "@net/index.js"
+import {ConnectionEvent, Echo, Local, Multi, Relay, Relays} from "../../src/net/index.js"
 
 describe("Target implementations", () => {
   describe("Echo", () => {

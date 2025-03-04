@@ -1,10 +1,10 @@
-import {now} from "@lib/index.js"
-import {publish, PublishStatus} from "@net/index.js"
-import {NOTE} from "@util/index.js"
+import {now} from "../../src/lib"
+import {publish, PublishStatus} from "../../src/net"
+import {NOTE} from "../../src/util"
 import {EventEmitter} from "events"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {repository, tracker} from "@app/core.js"
-import * as sessionModule from "@app/session.js"
+import {repository, tracker} from "../../src/app/core"
+import * as sessionModule from "../../src/app/session"
 import {
   abortThunk,
   makeThunk,
@@ -14,10 +14,10 @@ import {
   publishThunks,
   thunkWorker,
   walkThunks,
-} from "@app/thunk.js"
+} from "../../src/app/thunk"
 
 // Mock dependencies
-vi.mock("@net", () => ({
+vi.mock("../../src/net", () => ({
   publish: vi.fn().mockReturnValue({emitter: {on: vi.fn()}}),
   PublishStatus: {
     Pending: "pending",
@@ -28,7 +28,7 @@ vi.mock("@net", () => ({
   },
 }))
 
-vi.mock("../src/session", () => ({
+vi.mock("../../src/app/session", () => ({
   pubkey: {
     get: vi.fn().mockReturnValue("aa".repeat(32)),
   },
@@ -36,7 +36,7 @@ vi.mock("../src/session", () => ({
   getSigner: vi.fn(),
 }))
 
-vi.mock("../src/core", () => ({
+vi.mock("../../src/app/core", () => ({
   repository: {
     publish: vi.fn(),
     removeEvent: vi.fn(),

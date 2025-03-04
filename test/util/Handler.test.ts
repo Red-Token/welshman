@@ -1,8 +1,8 @@
-import {now} from "@lib/index.js"
-import {HANDLER_INFORMATION} from "@util/index.js"
+import {now} from "../../src/lib/index.js"
+import {HANDLER_INFORMATION} from "../../src/util/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
-import {readHandlers, getHandlerKey, displayHandler, getHandlerAddress} from "@util/Handler.js"
-import type {TrustedEvent} from "@util/Events.js"
+import {readHandlers, getHandlerKey, displayHandler, getHandlerAddress} from "../../src/util/Handler.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
 
 describe("Handler", () => {
   beforeEach(() => {

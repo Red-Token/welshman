@@ -1,5 +1,5 @@
 import {describe, it, vi, expect, beforeEach} from "vitest"
-import * as Tags from "@util/Tags.js"
+import * as Tags from "../../src/util/Tags.js"
 
 describe("Tags", () => {
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import {describe, expect, it} from "vitest"
-import {defer, makePromise} from "@lib/Deferred.js"
+import {defer, makePromise} from "../../src/lib/Deferred.js"
 
 describe("Deferred", () => {
   const pubkey = "ee".repeat(32)

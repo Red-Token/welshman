@@ -1,6 +1,6 @@
 import {describe, it, expect} from "vitest"
 import {decode, naddrEncode} from "nostr-tools/nip19"
-import {Address, getAddress} from "@util/Address.js"
+import {Address, getAddress} from "../../src/util/Address.js"
 
 describe("Address", () => {
   const pub = "ee".repeat(32)

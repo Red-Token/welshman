@@ -1,4 +1,4 @@
-import {Tracker} from "@net/Tracker.js"
+import {Tracker} from "../../src/net/Tracker.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 
 describe("Tracker", () => {

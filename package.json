@@ -1,6 +1,6 @@
 {
   "name": "@red-token/welshman",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "description": "A collection of svelte stores for use in building nostr client applications.",
   "publishConfig": {
@@ -48,6 +48,11 @@
       "import": "./build/src/store/index.js",
       "require": "./build/src/store/index.js"
     },
+    "./dvm": {
+      "types": "./build/src/dvm/index.d.ts",
+      "import": "./build/src/dvm/index.js",
+      "require": "./build/src/dvm/index.js"
+    },
     "./util": {
       "types": "./build/src/util/index.d.ts",
       "import": "./build/src/util/index.js",
@@ -64,7 +69,7 @@
     "docs:preview": "vitepress preview docs",
     "pub": "npm run lint && npm run build && npm publish",
     "build": "gts clean && tsc",
-    "buildtest": "gts clean && tsc --noImplicitAny false --noEmitOnError false",
+    "buildtest": "gts clean && tsc --noImplicitAny false",
     "lint": "gts lint",
     "format": "prettier --write .",
     "fix": "gts fix"
@@ -99,6 +104,7 @@
     "@braintree/sanitize-url": "^7.0.2",
     "@noble/curves": "^1.7.0",
     "@noble/hashes": "^1.6.1",
+    "@red-token/welshman": "^0.2.4",
     "@scure/base": "^1.1.6",
     "@types/events": "^3.0.3",
     "@types/throttle-debounce": "^5.0.2",

@@ -1,6 +1,6 @@
 import {describe, it, expect, vi} from "vitest"
-import {createSearch} from "@app/search.js"
-import type {SearchOptions} from "@app/search.js"
+import {createSearch} from "../../src/app/search.js"
+import type {SearchOptions} from "../../src/app/search.js"
 
 describe("createSearch", () => {
   // Test data

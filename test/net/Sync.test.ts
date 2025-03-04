@@ -1,16 +1,16 @@
-import {diff, pull, push, sync, pullWithoutNegentropy, pushWithoutNegentropy} from "@net/Sync.js"
-import {ctx, now} from "@lib/index.js"
-import type {SignedEvent, TrustedEvent, Filter} from "@util/index.js"
+import {diff, pull, push, sync, pullWithoutNegentropy, pushWithoutNegentropy} from "../../src/net/Sync.js"
+import {ctx, now} from "../../src/lib/index.js"
+import type {SignedEvent, TrustedEvent, Filter} from "../../src/util/index.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
-import {subscribe} from "@net/Subscribe.js"
-import {publish} from "@net/Publish.js"
+import {subscribe} from "../../src/net/Subscribe.js"
+import {publish} from "../../src/net/Publish.js"
 
 // Mock dependencies
-vi.mock("@net/Subscribe", () => ({
+vi.mock("../../src/net/Subscribe", () => ({
   subscribe: vi.fn(),
 }))
 
-vi.mock("@net/Publish", () => ({
+vi.mock("../../src/net/Publish", () => ({
   publish: vi.fn(),
 }))
 

@@ -1,7 +1,7 @@
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {Nip07Signer} from "@signer/signers/nip07.js"
+import {Nip07Signer} from "../../src/signer/signers/nip07.js"
 import {testSigner} from "./common.js"
-import {SignedEvent} from "@util/index.js"
+import {SignedEvent} from "../../src/util/index.js"
 
 describe("Nip07Signer", () => {
   beforeEach(() => {

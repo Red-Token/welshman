@@ -1,9 +1,9 @@
-import {defaultTagFeedMappings} from "@feeds/index.js"
-import {now} from "@lib/index.js"
-import {getAddress, type TrustedEvent} from "@util/index.js"
+import {defaultTagFeedMappings} from "../../src/feeds/index.js"
+import {now} from "../../src/lib/index.js"
+import {getAddress, type TrustedEvent} from "../../src/util/index.js"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {FeedCompiler} from "@feeds/compiler.js"
-import {Feed, FeedType, Scope} from "@feeds/core.js"
+import {FeedCompiler} from "../../src/feeds/compiler.js"
+import {Feed, FeedType, Scope} from "../../src/feeds/core.js"
 
 describe("FeedCompiler", () => {
   let compiler: FeedCompiler

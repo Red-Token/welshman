@@ -1,11 +1,11 @@
-import {ctx} from "@lib/index.js"
-import type {Filter, SignedEvent, TrustedEvent} from "@util/index.js"
+import {ctx} from "../../src/lib/index.js"
+import type {Filter, SignedEvent, TrustedEvent} from "../../src/util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {Executor} from "@net/Executor.js"
-import {Negentropy} from "@net/Negentropy.js"
+import {Executor} from "../../src/net/Executor.js"
+import {Negentropy} from "../../src/net/Negentropy.js"
 
 // Mock Negentropy
-vi.mock("@net/Negentropy.js", () => ({
+vi.mock("../../src/net/Negentropy.js", () => ({
   Negentropy: vi.fn().mockImplementation(() => ({
     reconcile: vi.fn().mockResolvedValue(["newMsg", ["id1"], ["id2"]]),
     initiate: vi.fn().mockResolvedValue("initialMsg"),

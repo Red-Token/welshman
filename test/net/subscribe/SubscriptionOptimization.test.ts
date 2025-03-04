@@ -1,12 +1,12 @@
-import {ctx} from "@lib/index.js"
-import type {TrustedEvent} from "@util/index.js"
+import {ctx} from "../../../src/lib/index.js"
+import type {TrustedEvent} from "../../../src/util/index.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 import {
   calculateSubscriptionGroup,
   mergeSubscriptions,
   Subscription,
   SubscriptionEvent,
-} from "@net/Subscribe.js"
+} from "../../../src/net/Subscribe.js"
 
 describe("Subscription optimization", () => {
   let mockExecutor: any

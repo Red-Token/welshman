@@ -4,3 +4,5 @@ test
 Negentropy.ts
 docs
 vitest.config.ts
+global.d.ts
+vitest.setup.ts

@@ -1,7 +1,7 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
 import {writable, get} from "svelte/store"
-import {Repository} from "@util/index.js"
-import {Tracker} from "@net/index.js"
+import {Repository} from "../../src/util"
+import {Tracker} from "../../src/net"
 import {
   initStorage,
   clearStorage,
@@ -10,7 +10,7 @@ import {
   getAll,
   bulkPut,
   bulkDelete,
-} from "@app/storage.js"
+} from "../../src/app/storage"
 
 describe("storage", () => {
   const DB_NAME = "test-db"

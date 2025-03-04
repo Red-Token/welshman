@@ -1,4 +1,4 @@
-import {now} from "@lib/index.js"
+import {now} from "../../src/lib/index.js"
 import {describe, it, expect, beforeEach, vi, afterEach} from "vitest"
 import {
   Relay,
@@ -10,9 +10,9 @@ import {
   isShareableRelayUrl,
   displayRelayUrl,
   displayRelayProfile,
-} from "@util/Relay.js"
-import {Repository} from "@util/Repository.js"
-import type {TrustedEvent} from "@util/Events.js"
+} from "../../src/util/Relay.js"
+import {Repository} from "../../src/util/Repository.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
 
 describe("Relay", () => {
   beforeEach(() => {

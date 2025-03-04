@@ -1,5 +1,5 @@
 import {describe, it, expect, beforeEach, vi} from "vitest"
-import {Emitter} from "@lib/Emitter.js"
+import {Emitter} from "../../src/lib/Emitter.js"
 
 describe("Emitter", () => {
   let emitter: Emitter

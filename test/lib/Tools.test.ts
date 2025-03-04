@@ -1,5 +1,5 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
-import * as T from "@lib/Tools.js"
+import * as T from "../../src/lib/Tools.js"
 
 describe("Tools", () => {
   beforeEach(() => {

@@ -1,10 +1,10 @@
 import {resolve} from "path"
 import {defineConfig} from "vitest/config"
-import "fake-indexeddb/auto"
 
 export default defineConfig({
   test: {
     environment: "happy-dom",
+    setupFiles: "./vitest.setup.ts",
     include: ["test/**/*.test.ts"],
     coverage: {
       provider: "v8",
@@ -14,15 +14,15 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@app": resolve(__dirname, "src/app"),
-      "@content": resolve(__dirname, "src/content"),
-      "@dvm": resolve(__dirname, "src/dvm"),
-      "@feeds": resolve(__dirname, "src/feeds"),
-      "@lib": resolve(__dirname, "src/lib"),
-      "@net": resolve(__dirname, "src/net"),
-      "@signer": resolve(__dirname, "src/signer"),
-      "@store": resolve(__dirname, "src/store"),
-      "@util": resolve(__dirname, "src/util"),
+      "@red-token/welshman/app": resolve(__dirname, "src/app"),
+      "@red-token/welshman/content": resolve(__dirname, "src/content"),
+      "@red-token/welshman/dvm": resolve(__dirname, "src/dvm"),
+      "@red-token/welshman/feeds": resolve(__dirname, "src/feeds"),
+      "@red-token/welshman/lib": resolve(__dirname, "src/lib"),
+      "@red-token/welshman/net": resolve(__dirname, "src/net"),
+      "@red-token/welshman/signer": resolve(__dirname, "src/signer"),
+      "@red-token/welshman/store": resolve(__dirname, "src/store"),
+      "@red-token/welshman/util": resolve(__dirname, "src/util"),
     },
   },
 })

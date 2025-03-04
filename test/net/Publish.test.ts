@@ -1,10 +1,10 @@
-import {ctx} from "@lib/index.js"
-import type {SignedEvent} from "@util/index.js"
+import {ctx} from "../../src/lib/index.js"
+import type {SignedEvent} from "../../src/util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {makePublish, publish, PublishStatus} from "@net/Publish.js"
+import {makePublish, publish, PublishStatus} from "../../src/net/Publish.js"
 
 // Mock dependencies
-vi.mock("@welshman/lib", async importOriginal => {
+vi.mock("../../src/lib", async importOriginal => {
   return {
     ...(await importOriginal()),
     randomId: () => "test-id",
@@ -17,7 +17,7 @@ vi.mock("@welshman/lib", async importOriginal => {
   }
 })
 
-vi.mock("@red-token/welshman/util", () => ({
+vi.mock("../../src/util", () => ({
   asSignedEvent: vi.fn(event => event),
 }))
 

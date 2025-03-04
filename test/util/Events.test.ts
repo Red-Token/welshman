@@ -1,8 +1,8 @@
-import {now} from "@lib/index.js"
+import {now} from "../../src/lib/index.js"
 import {describe, it, expect} from "vitest"
 import {verifiedSymbol} from "nostr-tools/pure"
-import * as Events from "@util/Events.js"
-import {COMMENT} from "@util/Kinds.js"
+import * as Events from "../../src/util/Events.js"
+import {COMMENT} from "../../src/util/Kinds.js"
 
 describe("Events", () => {
   // Realistic Nostr data

@@ -1,5 +1,5 @@
-import {ISigner} from "@signer/index.js"
-import {StampedEvent} from "@util/index.js"
+import {ISigner} from "../../src/signer/index.js"
+import {StampedEvent} from "../../src/util/index.js"
 import {beforeEach, describe, expect, it} from "vitest"
 
 // Common test suite for all signers

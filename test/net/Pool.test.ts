@@ -1,9 +1,9 @@
-import {Pool} from "@net/Pool.js"
-import {Connection} from "@net/Connection.js"
+import {Pool} from "../../src/net/Pool.js"
+import {Connection} from "../../src/net/Connection.js"
 import {vi, describe, it, expect, beforeEach} from "vitest"
 
 // Mock Connection class
-vi.mock("@net/Connection", () => ({
+vi.mock("../../src/net/Connection", () => ({
   Connection: vi.fn().mockImplementation(url => ({
     url,
     cleanup: vi.fn(),

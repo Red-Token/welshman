@@ -1,12 +1,12 @@
-import {ctx} from "@lib/index.js"
-import {FOLLOWS, MUTES, PINS} from "@util/index.js"
+import {ctx} from "../../src/lib"
+import {FOLLOWS, MUTES, PINS} from "../../src/util/"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {follow, mute, pin, unfollow, unmute, unpin} from "@app/commands.js"
-import * as thunkModule from "@app/thunk.js"
-import {thunkWorker} from "@app/thunk.js"
-import {repository} from "@app/core.js"
+import {follow, mute, pin, unfollow, unmute, unpin} from "../../src/app/commands"
+import * as thunkModule from "../../src/app/thunk"
+import {thunkWorker} from "../../src/app/thunk"
+import {repository} from "../../src/app/core"
 
-vi.mock(import("@lib/index.js"), async importOriginal => ({
+vi.mock(import("../../src/lib/"), async importOriginal => ({
   ...(await importOriginal()),
   ctx: {
     app: {
@@ -23,7 +23,7 @@ vi.mock(import("@lib/index.js"), async importOriginal => ({
   },
 }))
 
-vi.mock(import("@app/session.js"), async importOriginal => ({
+vi.mock(import("../../src/app/session"), async importOriginal => ({
   ...(await importOriginal()),
   nip44EncryptToSelf: vi.fn().mockImplementation(text => `encrypted:${text}`),
   pubkey: {

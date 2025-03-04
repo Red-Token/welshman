@@ -1,8 +1,8 @@
 import {describe, it, expect, vi, beforeEach} from "vitest"
-import {FeedController} from "@feeds/controller.js"
-import {Feed, FeedOptions, FeedType} from "@feeds/core.js"
-import {EPOCH, type TrustedEvent} from "@util/index.js"
-import {now} from "@lib/index.js"
+import {FeedController} from "../../src/feeds/controller.js"
+import {Feed, FeedOptions, FeedType} from "../../src/feeds/core.js"
+import {EPOCH, type TrustedEvent} from "../../src/util/index.js"
+import {now} from "../../src/lib/index.js"
 
 describe("FeedController", () => {
   let mockRequest: ReturnType<typeof vi.fn>

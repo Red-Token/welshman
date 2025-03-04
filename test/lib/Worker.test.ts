@@ -1,5 +1,5 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
-import {Worker} from "@lib/Worker.js"
+import {Worker} from "../../src/lib/Worker.js"
 
 describe("Worker", () => {
   beforeEach(() => {

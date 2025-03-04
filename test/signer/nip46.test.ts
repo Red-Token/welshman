@@ -8,18 +8,18 @@ import {
   Nip46Request,
   Nip46Response,
   Nip46BrokerParams,
-} from "@signer/signers/nip46.js"
+} from "../../src/signer/signers/nip46.js"
 import {testSigner} from "./common.js"
-import {NOSTR_CONNECT, SignedEvent, TrustedEvent} from "@util/index.js"
-import {publish, subscribe, SubscriptionEvent} from "@net/index.js"
-import {now} from "@lib/index.js"
+import {NOSTR_CONNECT, SignedEvent, TrustedEvent} from "../../src/util/index.js"
+import {publish, subscribe, SubscriptionEvent} from "../../src/net/index.js"
+import {now} from "../../src/lib/index.js"
 
 const mockSubscription = {
   on: vi.fn(),
   close: vi.fn(),
 }
 
-vi.mock(import("@net/index.js"), async importOriginal => ({
+vi.mock(import("../../src/net/index.js"), async importOriginal => ({
   ...(await importOriginal()),
   subscribe: vi.fn().mockImplementation(() => mockSubscription),
   publish: vi.fn().mockImplementation(() => ({

@@ -1,16 +1,16 @@
-import type {Filter, TrustedEvent} from "@util/index.js"
-import {hasValidSignature, isSignedEvent, LOCAL_RELAY_URL, matchFilters} from "@util/index.js"
+import type {Filter, TrustedEvent} from "../../src/util/index.js"
+import {hasValidSignature, isSignedEvent, LOCAL_RELAY_URL, matchFilters} from "../../src/util/index.js"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {AuthMode} from "@net/ConnectionAuth.js"
+import {AuthMode} from "../../src/net/ConnectionAuth.js"
 import {
   defaultOptimizeSubscriptions,
   eventValidationScores,
   getDefaultNetContext,
   isEventValid,
-} from "@net/Context.js"
+} from "../../src/net/Context.js"
 
 // Mock utilities that are imported
-vi.mock(import("@util/index.js"), async importOriginal => ({
+vi.mock(import("../../src/util/index.js"), async importOriginal => ({
   ...(await importOriginal()),
   isSignedEvent: vi.fn(),
   hasValidSignature: vi.fn(),

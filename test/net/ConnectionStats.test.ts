@@ -1,10 +1,10 @@
-import {ctx} from "@lib/index.js"
-import {AuthMode} from "@net/index.js"
-import {SignedEvent} from "@util/index.js"
+import {ctx} from "../../src/lib/index.js"
+import {AuthMode} from "../../src/net/index.js"
+import {SignedEvent} from "../../src/util/index.js"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {Connection} from "@net/Connection.js"
-import {ConnectionEvent} from "@net/ConnectionEvent.js"
-import {ConnectionStats} from "@net/ConnectionStats.js"
+import {Connection} from "../../src/net/Connection.js"
+import {ConnectionEvent} from "../../src/net/ConnectionEvent.js"
+import {ConnectionStats} from "../../src/net/ConnectionStats.js"
 
 describe("ConnectionStats", () => {
   let connection: Connection

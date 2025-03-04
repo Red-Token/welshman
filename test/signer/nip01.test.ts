@@ -1,5 +1,5 @@
 import {describe, expect, it} from "vitest"
-import {Nip01Signer} from "@signer/signers/nip01.js"
+import {Nip01Signer} from "../../src/signer/signers/nip01.js"
 import {testSigner} from "./common.js"
 
 describe("Nip01Signer", () => {

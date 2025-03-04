@@ -1,5 +1,5 @@
 import {describe, it, expect} from "vitest"
-import * as Content from "@content/index.js"
+import * as Content from "../../src/content/index.js"
 import {npubEncode, noteEncode} from "nostr-tools/nip19"
 
 describe("Content Parsing", () => {

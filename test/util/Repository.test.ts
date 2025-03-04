@@ -1,9 +1,9 @@
-import {now} from "@lib/index.js"
-import {getAddress} from "@util/index.js"
+import {now} from "../../src/lib/index.js"
+import {getAddress} from "../../src/util/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
-import {Repository} from "@util/Repository.js"
-import type {TrustedEvent} from "@util/Events.js"
-import {DELETE, MUTES} from "@util/Kinds.js"
+import {Repository} from "../../src/util/Repository.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
+import {DELETE, MUTES} from "../../src/util/Kinds.js"
 
 describe("Repository", () => {
   beforeEach(() => {

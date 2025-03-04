@@ -1,9 +1,9 @@
-import {ConnectionAuth, AuthStatus, AuthMode} from "@net/ConnectionAuth.js"
-import {Connection} from "@net/Connection.js"
-import {ConnectionEvent} from "@net/ConnectionEvent.js"
-import {ctx, sleep} from "@lib/index.js"
+import {ConnectionAuth, AuthStatus, AuthMode} from "../../src/net/ConnectionAuth.js"
+import {Connection} from "../../src/net/Connection.js"
+import {ConnectionEvent} from "../../src/net/ConnectionEvent.js"
+import {ctx, sleep} from "../../src/lib/index.js"
 import {vi, describe, it, expect, beforeEach, afterEach} from "vitest"
-import {SocketStatus} from "@net/Socket.js"
+import {SocketStatus} from "../../src/net/Socket.js"
 
 describe("ConnectionAuth", () => {
   let connection: Connection

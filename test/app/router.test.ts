@@ -1,8 +1,8 @@
-import {ctx, now} from "@lib/index.js"
-import {COMMENT, PROFILE, RELAYS, TrustedEvent} from "@util/index.js"
+import {ctx, now} from "../../src/lib/index.js"
+import {COMMENT, PROFILE, RELAYS, TrustedEvent} from "../../src/util/index.js"
 import {beforeEach, describe, expect, it, vi} from "vitest"
-import {relaysByUrl} from "@app/relays.js"
-import {relaySelectionsByPubkey} from "@app/relaySelections.js"
+import {relaysByUrl} from "../../src/app/relays.js"
+import {relaySelectionsByPubkey} from "../../src/app/relaySelections.js"
 import {
   RelayMode,
   Router,
@@ -13,10 +13,10 @@ import {
   getPubkeyRelays,
   getRelayQuality,
   makeRouter,
-} from "@app/router.js"
+} from "../../src/app/router.js"
 
 // Mock dependencies
-vi.mock(import("@lib/index.js"), async imports => ({
+vi.mock(import("../../src/lib/index.js"), async imports => ({
   ...(await imports()),
   ctx: {
     net: {
@@ -30,14 +30,14 @@ vi.mock(import("@lib/index.js"), async imports => ({
   },
 }))
 
-vi.mock(import("@app/relays.js"), async imports => ({
+vi.mock(import("../../src/app/relays.js"), async imports => ({
   ...(await imports()),
   relaysByUrl: {
     get: vi.fn(),
   },
 }))
 
-vi.mock(import("@app/relaySelections.js"), async imports => ({
+vi.mock(import("../../src/app/relaySelections.js"), async imports => ({
   ...(await imports()),
   relaySelectionsByPubkey: {
     get: vi.fn().mockReturnValue(new Map()),

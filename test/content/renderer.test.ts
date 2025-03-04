@@ -1,5 +1,5 @@
 import {describe, it, expect, beforeEach} from "vitest"
-import {htmlRenderOptions, Renderer, textRenderOptions} from "@content/index.js"
+import {htmlRenderOptions, Renderer, textRenderOptions} from "../../src/content/index.js"
 
 describe("Renderer", () => {
   let renderer: Renderer

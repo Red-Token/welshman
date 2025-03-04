@@ -1,7 +1,7 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
-import {ConnectionEvent, type Connection} from "@net/index.js"
-import {now} from "@lib/index.js"
-import {Relay, relays, trackRelayStats} from "@app/relays.js"
+import {ConnectionEvent, type Connection} from "../../src/net/index.js"
+import {now} from "../../src/lib/index.js"
+import {Relay, relays, trackRelayStats} from "../../src/app/relays.js"
 import {get} from "svelte/store"
 
 describe("Relay Stats", () => {

@@ -1,4 +1,4 @@
-import {now} from "@lib/index.js"
+import {now} from "../../src/lib/index.js"
 import {describe, it, vi, expect, beforeEach} from "vitest"
 import {
   makeProfile,
@@ -9,10 +9,10 @@ import {
   displayProfile,
   profileHasName,
   isPublishedProfile,
-} from "@util/Profile.js"
-import {PROFILE} from "@util/Kinds.js"
-import type {TrustedEvent} from "@util/Events.js"
-import type {Profile, PublishedProfile} from "@util/Profile.js"
+} from "../../src/util/Profile.js"
+import {PROFILE} from "../../src/util/Kinds.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
+import type {Profile, PublishedProfile} from "../../src/util/Profile.js"
 
 describe("Profile", () => {
   beforeEach(() => {

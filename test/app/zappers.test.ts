@@ -1,9 +1,9 @@
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
-import {ctx, fetchJson, bech32ToHex, hexToBech32, tryCatch, postJson} from "@lib/index.js"
-import {fetchZappers} from "@app/zappers.js"
+import {ctx, fetchJson, bech32ToHex, hexToBech32, tryCatch, postJson} from "../../src/lib"
+import {fetchZappers} from "../../src/app/zappers"
 
 // Mock dependencies
-vi.mock("@welshman/lib", async imports => {
+vi.mock("../../src/lib", async imports => {
   return {
     ...(await imports()),
     ctx: {

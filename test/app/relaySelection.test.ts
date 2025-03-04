@@ -1,9 +1,9 @@
-import * as util from "@util/index.js"
+import * as util from "../../src/util"
 import {afterEach, beforeEach, describe, expect, test, vi} from "vitest"
-import * as relaySelectionModule from "@app/relaySelections.js"
+import * as relaySelectionModule from "../../src/app/relaySelections"
 
 // Mock dependencies
-vi.mock("@welshman/util", async imports => {
+vi.mock("../../src/util", async imports => {
   return {
     ...(await imports()),
     normalizeRelayUrl: vi.fn(url => url),
@@ -15,18 +15,18 @@ vi.mock("@welshman/util", async imports => {
   }
 })
 
-vi.mock("@welshman/store", async imports => {
+vi.mock("../../src/store", async imports => {
   return {
     ...(await imports()),
     deriveEventsMapped: vi.fn(() => ({subscribe: () => ({unsubscribe: () => {}})})),
   }
 })
 
-vi.mock("../src/subscribe.js", () => ({
+vi.mock("../../src/app/subscribe", () => ({
   load: vi.fn().mockResolvedValue([]),
 }))
 
-vi.mock("../src/collection.js", () => ({
+vi.mock("../../src/app/collection", () => ({
   collection: vi.fn(() => ({
     indexStore: {},
     deriveItem: vi.fn(),

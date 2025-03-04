@@ -1,8 +1,8 @@
 import {describe, it, expect, beforeEach, vi, afterEach} from "vitest"
 import {get, writable} from "svelte/store"
-import {collection} from "@app/collection.js"
-import {freshness, setFreshnessImmediate} from "@app/freshness.js"
-import {now} from "@lib/index.js"
+import {collection} from "../../src/app/collection"
+import {freshness, setFreshnessImmediate} from "../../src/app/freshness.js"
+import {now} from "../../src/lib/index.js"
 
 describe("collection", () => {
   beforeEach(() => {

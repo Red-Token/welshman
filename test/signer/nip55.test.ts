@@ -1,6 +1,6 @@
 import {NostrSignerPlugin} from "nostr-signer-capacitor-plugin"
 import {describe, beforeEach, vi, it, expect} from "vitest"
-import {Nip55Signer} from "../src/signers/nip55"
+import {Nip55Signer} from "../../src/signer/signers/nip55"
 import {testSigner} from "./common"
 import {npubEncode} from "nostr-tools/nip19"
 

@@ -1,8 +1,8 @@
-import {sleep} from "@lib/index.js"
+import {sleep} from "../../src/lib/index.js"
 import WebSocket from "isomorphic-ws"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {ConnectionEvent} from "@net/ConnectionEvent.js"
-import {Message, Socket, SocketStatus} from "@net/Socket.js"
+import {ConnectionEvent} from "../../src/net/ConnectionEvent.js"
+import {Message, Socket, SocketStatus} from "../../src/net/Socket.js"
 
 // Mock dependencies
 vi.mock("isomorphic-ws")

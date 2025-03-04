@@ -1,8 +1,8 @@
-import {MUTES} from "@util/index.js"
-import {now} from "@lib/index.js"
+import {MUTES} from "../../src/util/index.js"
+import {now} from "../../src/lib/index.js"
 import {describe, it, expect, vi, beforeEach} from "vitest"
-import {Encryptable, asDecryptedEvent} from "@util/Encryptable.js"
-import type {OwnedEvent, TrustedEvent} from "@util/Events.js"
+import {Encryptable, asDecryptedEvent} from "../../src/util/Encryptable.js"
+import type {OwnedEvent, TrustedEvent} from "../../src/util/Events.js"
 
 describe("Encryptable", () => {
   beforeEach(() => {

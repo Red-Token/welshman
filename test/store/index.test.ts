@@ -1,4 +1,4 @@
-import type {Repository, TrustedEvent} from "@welshman/util"
+import type {Repository, TrustedEvent} from "../../src/util"
 import {get} from "svelte/store"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
 import {
@@ -11,7 +11,7 @@ import {
   synced,
   throttled,
   withGetter,
-} from "../src/index"
+} from "../../src/store"
 
 // Mock localStorage
 const localStorageMock = (() => {

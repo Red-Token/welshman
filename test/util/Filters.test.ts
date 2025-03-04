@@ -1,8 +1,8 @@
 import {describe, it, vi, expect, beforeEach} from "vitest"
-import * as Filters from "@util/Filters.js"
+import * as Filters from "../../src/util/Filters.js"
 
-import type {TrustedEvent} from "@util/Events.js"
-import {GENERIC_REPOST, LONG_FORM, MUTES, REPOST} from "@util/index.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
+import {GENERIC_REPOST, LONG_FORM, MUTES, REPOST} from "../../src/util/index.js"
 
 describe("Filters", () => {
   beforeEach(() => {

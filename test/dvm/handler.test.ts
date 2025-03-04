@@ -1,9 +1,9 @@
-import {publish, subscribe} from "@net/index.js"
-import type {StampedEvent, TrustedEvent} from "@util/index.js"
+import {publish, subscribe} from "../../src/net"
+import type {StampedEvent, TrustedEvent} from "../../src/util"
 import {finalizeEvent} from "nostr-tools/pure"
 import {afterAll, beforeEach, describe, expect, it, vi} from "vitest"
-import {DVM, type DVMHandler, type DVMOpts} from "@dvm/index.js"
-import {now} from "@lib/index.js"
+import {DVM, type DVMHandler, type DVMOpts} from "../../src/dvm/handler"
+import {now} from "../../src/lib"
 
 // Mock dependencies
 vi.mock("nostr-tools/pure", () => ({
@@ -11,7 +11,7 @@ vi.mock("nostr-tools/pure", () => ({
   finalizeEvent: vi.fn(template => ({...template, sig: "ff".repeat(64)})),
 }))
 
-vi.mock("@net", () => ({
+vi.mock("../../src/net", () => ({
   subscribe: vi.fn(),
   publish: vi.fn(),
 }))

@@ -1,12 +1,12 @@
-import {ctx} from "@lib/index.js"
-import {subscribe as baseSubscribe, SubscriptionEvent} from "@net/index.js"
-import {getFilterResultCardinality, LOCAL_RELAY_URL} from "@util/index.js"
+import {ctx} from "../../src/lib"
+import {subscribe as baseSubscribe, SubscriptionEvent} from "../../src/net"
+import {getFilterResultCardinality, LOCAL_RELAY_URL} from "../../src/util"
 import {afterEach, beforeEach, describe, expect, it, vi} from "vitest"
-import {repository} from "@app/core.js"
-import {load, subscribe} from "@app/subscribe.js"
+import {repository} from "../../src/app/core"
+import {load, subscribe} from "../../src/app/subscribe"
 
 // Mock dependencies
-vi.mock("@welshman/lib", async () => ({
+vi.mock("../../src/lib", async () => ({
   ctx: {
     app: {
       requestDelay: 50,
@@ -17,12 +17,12 @@ vi.mock("@welshman/lib", async () => ({
   isNil: vi.fn(x => x === null || x === undefined),
 }))
 
-vi.mock("@welshman/util", async () => ({
+vi.mock("../../src/util", async () => ({
   LOCAL_RELAY_URL: "ws://localhost:3000",
   getFilterResultCardinality: vi.fn(),
 }))
 
-vi.mock("@welshman/net", async () => {
+vi.mock("../../src/net", async () => {
   const mockEmitter = {
     emit: vi.fn(),
     on: vi.fn(),
@@ -39,7 +39,7 @@ vi.mock("@welshman/net", async () => {
   }
 })
 
-vi.mock("../src/core.js", async () => ({
+vi.mock("../../src/app/core", async () => ({
   repository: {
     query: vi.fn(() => []),
   },

@@ -1,7 +1,7 @@
 import {describe, it, vi, expect, beforeEach} from "vitest"
-import {hrpToMillisat, getInvoiceAmount, getLnUrl, zapFromEvent, Zapper} from "@util/Zaps.js"
-import type {TrustedEvent} from "@util/Events.js"
-import {now} from "@lib/index.js"
+import {hrpToMillisat, getInvoiceAmount, getLnUrl, zapFromEvent, Zapper} from "../../src/util/Zaps.js"
+import type {TrustedEvent} from "../../src/util/Events.js"
+import {now} from "../../src/lib/index.js"
 
 describe("Zaps", () => {
   const recipient = "dd".repeat(32)
