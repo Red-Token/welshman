@@ -31,6 +31,8 @@ export type RelayProfile = {
 // Utils related to bare urls
 
 export const isRelayUrl = (url: string) => {
+  if(url === undefined) return false
+
   if (!url.includes("://")) {
     url = "wss://" + url
   }
