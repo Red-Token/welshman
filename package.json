@@ -1,6 +1,6 @@
 {
   "name": "@red-token/welshman",
-  "version": "0.2.7",
+  "version": "0.2.8-snapshot.1",
   "license": "MIT",
   "description": "A collection of svelte stores for use in building nostr client applications.",
   "publishConfig": {
@@ -63,6 +63,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
+    "patch": "npm version patch",
+    "snapshot": "npm version prerelease --preid snapshot --no-git-tag-version",
     "predocs": "typedoc",
     "docs:dev": "vitepress dev docs",
     "docs:build": "npx typedoc && vitepress build docs",
@@ -95,6 +97,7 @@
   },
   "files": [
     "build/**/*",
+    "src/**/*",
     "docs/**/*",
     "package.json",
     "README.md",
