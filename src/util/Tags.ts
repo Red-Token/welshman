@@ -20,17 +20,17 @@ export const getTagValues = (types: string | string[], tags: string[][]) =>
 export const getTagValue = (types: string | string[], tags: string[][]) => getTag(types, tags)?.[1]
 
 export const getEventTags = (tags: string[][]) =>
-  tags.filter(t => ["e"].includes(t[0]) && t[1].length === 64)
+  tags.filter(t => t.length >= 2 && ["e"].includes(t[0]) && t[1].length === 64)
 
 export const getEventTagValues = (tags: string[][]) => getEventTags(tags).map(nth(1))
 
 export const getAddressTags = (tags: string[][]) =>
-  tags.filter(t => ["a"].includes(t[0]) && Address.isAddress(t[1]))
+  tags.filter(t => t.length >= 2 && ["a"].includes(t[0]) && Address.isAddress(t[1]))
 
 export const getAddressTagValues = (tags: string[][]) => getAddressTags(tags).map(nth(1))
 
 export const getPubkeyTags = (tags: string[][]) =>
-  tags.filter(t => ["p"].includes(t[0]) && t[1].length === 64)
+  tags.filter(t => t.length >= 2 && ["p"].includes(t[0]) && t[1]?.length === 64)
 
 export const getPubkeyTagValues = (tags: string[][]) => getPubkeyTags(tags).map(nth(1))
 
@@ -40,17 +40,17 @@ export const getTopicTagValues = (tags: string[][]) =>
   getTopicTags(tags).map(t => t[1].replace(/^#/, ""))
 
 export const getRelayTags = (tags: string[][]) =>
-  tags.filter(t => ["r", "relay"].includes(t[0]) && isRelayUrl(t[1] || ""))
+  tags.filter(t => t.length >= 2 && ["r", "relay"].includes(t[0]) && isRelayUrl(t[1] || ""))
 
 export const getRelayTagValues = (tags: string[][]) => getRelayTags(tags).map(nth(1))
 
 export const getGroupTags = (tags: string[][]) =>
-  tags.filter(t => ["h", "group"].includes(t[0]) && t[1] && isRelayUrl(t[2] || ""))
+  tags.filter(t => t.length >= 3 && ["h", "group"].includes(t[0]) && t[1] && isRelayUrl(t[2] || ""))
 
 export const getGroupTagValues = (tags: string[][]) => getGroupTags(tags).map(nth(1))
 
 export const getKindTags = (tags: string[][]) =>
-  tags.filter(t => ["k"].includes(t[0]) && t[1].match(/^\d+$/))
+  tags.filter(t => t.length >= 2 && ["k"].includes(t[0]) && t[1].match(/^\d+$/))
 
 export const getKindTagValues = (tags: string[][]) => getKindTags(tags).map(t => parseInt(t[1]))
 
