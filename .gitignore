@@ -10,3 +10,4 @@ docs/reference
 docs/**/*.html
 tsconfig.tsbuildinfo
 .idea
+.hide
